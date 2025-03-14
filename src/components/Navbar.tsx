@@ -48,7 +48,7 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Menu */}
-        <div className="desktop-menu hidden md:flex space-x-8" style={{ display: 'none' }}>
+        <div className="desktop-menu md:flex space-x-8">
           <NavLink to="/">Home</NavLink>
           <NavLink to="/gallery">Gallery</NavLink>
           <NavLink to="/about">About</NavLink>
@@ -59,7 +59,6 @@ const Navbar = () => {
         <button 
           className="mobile-menu-button md:hidden"
           onClick={() => setIsOpen(!isOpen)}
-          style={{ display: 'block' }}
         >
           {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
         </button>
