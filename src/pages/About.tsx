@@ -42,7 +42,7 @@ const About = () => {
         >
           <div className="aspect-w-16 aspect-h-7 rounded-lg overflow-hidden shadow-lg">
             <img 
-              src="/src/assets/images/landscape2.jpg" 
+              src="/public/assets/images/landscape2.jpg" 
               alt="Gallery Interior" 
               className="w-full h-full object-cover"
             />
@@ -62,21 +62,21 @@ const About = () => {
             <TeamMember 
               name="Sarah Ratts" 
               title="Founder & Director" 
-              image="/src/assets/images/portrait1.jpg"
+              image="/public/assets/images/portrait1.jpg"
               bio="With over 15 years of experience in the art world, Sarah brings her passion for contemporary art and keen curatorial vision to the gallery."
             />
             
             <TeamMember 
               name="Michael Chen" 
               title="Gallery Manager" 
-              image="/src/assets/images/abstract1.jpg"
+              image="/public/assets/images/abstract1.jpg"
               bio="Michael oversees the day-to-day operations of the gallery and works closely with artists to develop and present their exhibitions."
             />
             
             <TeamMember 
               name="Olivia Winters" 
               title="Art Consultant" 
-              image="/src/assets/images/portrait2.jpg"
+              image="/public/assets/images/portrait2.jpg"
               bio="Olivia helps collectors build meaningful art collections, offering expert guidance on acquisitions and collection management."
             />
           </div>
