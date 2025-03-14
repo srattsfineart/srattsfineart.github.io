@@ -17,7 +17,7 @@ export const artCollection: ArtPiece[] = [
     year: 2023,
     medium: "Oil on canvas",
     dimensions: "36 × 48 inches",
-    imageUrl: "/src/assets/images/landscape1.svg",
+    imageUrl: "/public/assets/images/landscape1.svg",
     category: "Landscape"
   },
   {
@@ -27,7 +27,7 @@ export const artCollection: ArtPiece[] = [
     year: 2022,
     medium: "Acrylic on canvas",
     dimensions: "30 × 40 inches",
-    imageUrl: "/src/assets/images/figure1.svg",
+    imageUrl: "/public/assets/images/figure1.svg",
     category: "Figurative"
   },
   {
@@ -37,7 +37,7 @@ export const artCollection: ArtPiece[] = [
     year: 2023,
     medium: "Mixed media",
     dimensions: "24 × 36 inches",
-    imageUrl: "/src/assets/images/abstract1.svg",
+    imageUrl: "/public/assets/images/abstract1.svg",
     category: "Abstract"
   },
   {
@@ -47,7 +47,7 @@ export const artCollection: ArtPiece[] = [
     year: 2021,
     medium: "Oil on canvas",
     dimensions: "40 × 40 inches",
-    imageUrl: "/src/assets/images/abstract2.svg",
+    imageUrl: "/public/assets/images/abstract2.svg",
     category: "Abstract"
   },
   {
@@ -57,7 +57,7 @@ export const artCollection: ArtPiece[] = [
     year: 2022,
     medium: "Oil on canvas",
     dimensions: "24 × 36 inches",
-    imageUrl: "/src/assets/images/landscape2.svg",
+    imageUrl: "/public/assets/images/landscape2.svg",
     category: "Landscape"
   },
   {
@@ -67,7 +67,7 @@ export const artCollection: ArtPiece[] = [
     year: 2023,
     medium: "Mixed media",
     dimensions: "30 × 30 inches",
-    imageUrl: "/src/assets/images/portrait1.svg",
+    imageUrl: "/public/assets/images/portrait1.svg",
     category: "Portrait"
   },
   {
@@ -77,7 +77,7 @@ export const artCollection: ArtPiece[] = [
     year: 2021,
     medium: "Acrylic on canvas",
     dimensions: "36 × 48 inches",
-    imageUrl: "/src/assets/images/landscape3.svg",
+    imageUrl: "/public/assets/images/landscape3.svg",
     category: "Landscape"
   },
   {
@@ -87,7 +87,7 @@ export const artCollection: ArtPiece[] = [
     year: 2022,
     medium: "Acrylic on canvas",
     dimensions: "36 × 36 inches",
-    imageUrl: "/src/assets/images/abstract3.svg",
+    imageUrl: "/public/assets/images/abstract3.svg",
     category: "Abstract"
   },
   {
@@ -97,7 +97,7 @@ export const artCollection: ArtPiece[] = [
     year: 2023,
     medium: "Oil on canvas",
     dimensions: "24 × 30 inches",
-    imageUrl: "/src/assets/images/portrait2.svg",
+    imageUrl: "/public/assets/images/portrait2.svg",
     category: "Portrait"
   }
 ];
