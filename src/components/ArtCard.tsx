@@ -24,6 +24,11 @@ const ArtCard = ({ art, onClick }: ArtCardProps) => {
           src={art.imageUrl}
           alt={art.title}
         />
+        {art.sold && (
+          <div className="sold-indicator" title="Sold">
+            <span className="sold-dot"></span>
+          </div>
+        )}
       </div>
       
       <motion.div 
@@ -31,7 +36,7 @@ const ArtCard = ({ art, onClick }: ArtCardProps) => {
         animate={{ opacity: isHovered ? 1 : 0 }}
       >
         <h3 className="art-card-title">{art.title}</h3>
-        <p className="art-card-info">{art.year} | {art.medium}</p>
+        <p className="art-card-info">{art.medium}</p>
       </motion.div>
     </motion.div>
   );
