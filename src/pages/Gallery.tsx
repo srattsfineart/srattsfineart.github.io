@@ -18,7 +18,7 @@ const Gallery = () => {
     if (selectedCategory === 'All') {
       setFilteredArt(artCollection);
     } else {
-      setFilteredArt(artCollection.filter(art => art.category === selectedCategory));
+      setFilteredArt(artCollection.filter(art => art.categories.includes(selectedCategory)));
     }
   }, [selectedCategory]);
 

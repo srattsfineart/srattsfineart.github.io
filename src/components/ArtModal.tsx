@@ -72,7 +72,7 @@ const ArtModal = ({ art, isOpen, onClose }: ArtModalProps) => {
               
               <div className="modal-details">
                 <h2 className="modal-title font-serif">{art.title}</h2>
-                <p className="modal-info">{art.year}</p>
+                {/* <p className="modal-info">{art.year}</p> */}
                 
                 <div className="modal-description">
                   <p>{art.description}</p>
@@ -81,7 +81,7 @@ const ArtModal = ({ art, isOpen, onClose }: ArtModalProps) => {
                 <div className="modal-specs">
                   <p><span className="font-medium">Medium:</span> {art.medium}</p>
                   <p><span className="font-medium">Dimensions:</span> {art.dimensions}</p>
-                  <p><span className="font-medium">Category:</span> {art.category}</p>
+                  <p><span className="font-medium">Category:</span> {art.categories.join(', ')}</p>
                 </div>
                 
                 <button className="btn mt-6">

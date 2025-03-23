@@ -60,14 +60,14 @@ const About = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <TeamMember 
-              name="Sarah Ratts" 
+              name="Shannon Ratts" 
               title="Founder & Director" 
               image="/assets/images/portrait1.jpg"
-              bio="With over 15 years of experience in the art world, Sarah brings her passion for contemporary art and keen curatorial vision to the gallery."
+              bio="With over 15 years of experience in the art world, Shannon brings her passion for contemporary art and keen curatorial vision to the gallery."
             />
             
             <TeamMember 
-              name="Michael Chen" 
+              name="`Michael Chen" 
               title="Gallery Manager" 
               image="/assets/images/abstract1.jpg"
               bio="Michael oversees the day-to-day operations of the gallery and works closely with artists to develop and present their exhibitions."

@@ -1,105 +1,254 @@
 export interface ArtPiece {
   id: number;
   title: string;
-  description: string;
-  year: number;
+  description?: string;
   medium: string;
   dimensions: string;
   imageUrl: string;
-  category: string;
+  categories: string[];
+  sold: boolean;
+  price: number;
 }
 
 export const artCollection: ArtPiece[] = [
   {
     id: 1,
-    title: "Ethereal Landscape",
-    description: "An abstract interpretation of a mountain landscape at dawn, with layers of mist creating a dreamlike atmosphere.",
-    year: 2023,
+    title: "A Day in Saguache",
     medium: "Oil on canvas",
-    dimensions: "36 × 48 inches",
-    imageUrl: "/assets/images/landscape1.svg",
-    category: "Landscape"
+    dimensions: "12 x 16 inches",
+    imageUrl: "/assets/images/A Day in Saguache.jpg",
+    categories: ["Figurative", "Animals"],
+    sold: true,
+    price: 650
   },
   {
     id: 2,
-    title: "Contemplation",
-    description: "A figure in silhouette stands before a vast horizon, representing the human condition and our place in the universe.",
-    year: 2022,
-    medium: "Acrylic on canvas",
-    dimensions: "30 × 40 inches",
-    imageUrl: "/assets/images/figure1.svg",
-    category: "Figurative"
+    title: "A Dollop of Daisies",
+    description: "Framed in a brown wood floating frame.",
+    medium: "Oil on panel",
+    dimensions: "6 × 8 inches",
+    imageUrl: "/assets/images/A Dollop of Daisies.jpg",
+    categories: ["Animals", "Western"],
+    sold: false,
+    price: 100
   },
   {
     id: 3,
-    title: "Urban Rhythm",
-    description: "A dynamic composition capturing the energy and movement of city life through bold geometric forms and vibrant colors.",
-    year: 2023,
-    medium: "Mixed media",
-    dimensions: "24 × 36 inches",
-    imageUrl: "/assets/images/abstract1.svg",
-    category: "Abstract"
+    title: "Ankole Watusi in Pennsylvania",
+    medium: "Oil on canvas",
+    dimensions: "16 × 20 inches",
+    imageUrl: "/assets/images/Ankole Watusi in Pennsylvania.jpg",
+    categories: ["Animals"],
+    sold: true,
+    price: 675
   },
   {
     id: 4,
-    title: "Serenity in Blue",
-    description: "An exploration of color and emotion through various shades of blue, creating a meditative and calming visual experience.",
-    year: 2021,
-    medium: "Oil on canvas",
-    dimensions: "40 × 40 inches",
-    imageUrl: "/assets/images/abstract2.svg",
-    category: "Abstract"
+    title: "Beauty in Desolation",
+    medium: "Oil on panel",
+    dimensions: "8 × 10 inches",
+    imageUrl: "/assets/images/Beauty in Desolation.jpg",
+    categories: ["Landscape"],
+    sold: true,
+    price: 150
   },
   {
     id: 5,
-    title: "Autumn Reflections",
-    description: "A serene lake scene with vibrant fall foliage reflected in still waters, capturing a moment of perfect natural harmony.",
-    year: 2022,
+    title: "Butterfly Pavillion Tuscon",
     medium: "Oil on canvas",
-    dimensions: "24 × 36 inches",
-    imageUrl: "/assets/images/landscape2.svg",
-    category: "Landscape"
+    dimensions: "11 × 14 inches",
+    imageUrl: "/assets/images/Butterfly Pavillion Tuscon.jpg",
+    categories: ["Landscape"],
+    sold: true,
+    price: 325
   },
   {
     id: 6,
-    title: "Fragmented Identity",
-    description: "A portrait composed of fragmented elements, exploring themes of identity and the multifaceted nature of self.",
-    year: 2023,
-    medium: "Mixed media",
-    dimensions: "30 × 30 inches",
-    imageUrl: "/assets/images/portrait1.svg",
-    category: "Portrait"
+    title: "Casper & Doug",
+    medium: "Oil on canvas",
+    dimensions: "16 × 20 inches",
+    imageUrl: "/assets/images/Casper and Doug.jpg",
+    categories: ["Commision", "Animals"],
+    sold: true,
+    price: 500
   },
   {
     id: 7,
-    title: "Coastal Dreams",
-    description: "A semi-abstract seascape capturing the ever-changing relationship between sky, sea, and shore.",
-    year: 2021,
-    medium: "Acrylic on canvas",
-    dimensions: "36 × 48 inches",
-    imageUrl: "/assets/images/landscape3.svg",
-    category: "Landscape"
+    title: "Cow in Globemallow",
+    medium: "Oil on canvas",
+    dimensions: "16 × 20 inches",
+    imageUrl: "/assets/images/Cow in Globemallow.jpg",
+    categories: ["Animals"],
+    sold: true,
+    price: 500
   },
   {
     id: 8,
-    title: "Geometric Harmony",
-    description: "A composition of balanced geometric forms creating a sense of order and harmony through careful color relationships.",
-    year: 2022,
-    medium: "Acrylic on canvas",
-    dimensions: "36 × 36 inches",
-    imageUrl: "/assets/images/abstract3.svg",
-    category: "Abstract"
+    title: "Evening Blooms",
+    description: "Palette knife on unframed panel.",
+    medium: "Oil on panel",
+    dimensions: "11 × 14 inches",
+    imageUrl: "/assets/images/Evening Blooms.jpg",
+    categories: ["Landscape"],
+    sold: false,
+    price: 225
   },
   {
     id: 9,
-    title: "The Gaze",
-    description: "An intimate portrait exploring the power of direct eye contact and the emotional connection between subject and viewer.",
-    year: 2023,
+    title: "Evening Color",
+    description: "Palette knife on unframed panel.",
+    medium: "Oil on panel",
+    dimensions: "8 × 10 inches",
+    imageUrl: "/assets/images/Evening Color.jpg",
+    categories: ["Landscape"],
+    sold: false,
+    price: 175
+  },
+  {
+    id: 10,
+    title: "In Pursuit of Two Feet",
     medium: "Oil on canvas",
-    dimensions: "24 × 30 inches",
-    imageUrl: "/assets/images/portrait2.svg",
-    category: "Portrait"
+    dimensions: "8 × 10 inches",
+    imageUrl: "/assets/images/In Pursuit of Two Feet.jpg",
+    categories: ["Western", "Animals", "Figurative"],
+    sold: true,
+    price: 175
+  },
+  {
+    id: 11,
+    title: "Living an American Dream",
+    medium: "Oil on canvas",
+    description: "On unframed canvas.",
+    dimensions: "9 × 12 inches",
+    imageUrl: "/assets/images/Living an American Dream.jpg",
+    categories: ["Western", "Animals", "Figurative"],
+    sold: false,
+    price: 225
+  },
+  {
+    id: 12,
+    title: "Her American Dream",
+    medium: "Oil on canvas",
+    dimensions: "12 × 16 inches",
+    imageUrl: "/assets/images/Her American Dream.jpg",
+    categories: ["Western", "Animals", "Figurative"],
+    sold: true,
+    price: 250
+  },
+  {
+    id: 13,
+    title: "Maricopa Wild Horses",
+    description: "On unframed canvas.",
+    medium: "Oil on canvas",
+    dimensions: "8 × 10 inches",
+    imageUrl: "/assets/images/Maricopa Wild Horses.jpg",
+    categories: ["Animals"],
+    sold: false,
+    price: 250
+  },
+  {
+    id: 14,
+    title: "Meandering Gila River",
+    description: "On unframed canvas.",
+    medium: "Oil on canvas",
+    dimensions: "9 × 12 inches",
+    imageUrl: "/assets/images/Meandering Gila River.jpg",
+    categories: ["Landscape"],
+    sold: false,
+    price: 250
+  },
+  {
+    id: 15,
+    title: "Mo",
+    medium: "Oil on panel",
+    dimensions: "9 × 12 inches",
+    imageUrl: "/assets/images/Mo.jpg",
+    categories: ["Commision", "Animals"],
+    sold: true,
+    price: 350
+  },
+  {
+    id: 16,
+    title: "Natalie & Kos",
+    medium: "Oil on canvas",
+    dimensions: "8 × 10 inches",
+    imageUrl: "/assets/images/Natalie and Kos.jpg",
+    categories: ["Figurative", "Animals"],
+    sold: true,
+    price: 325
+  },
+  {
+    id: 17,
+    title: "Praise for a Job Well Done",
+    medium: "Oil on canvas",
+    dimensions: "16 × 20 inches",
+    imageUrl: "/assets/images/Praise for a Job Well Done.jpg",
+    categories: ["Western", "Animals", "Figurative"],
+    sold: true,
+    price: 750
+  },
+  {
+    id: 18,
+    title: "Swoop",
+    medium: "Oil on panel",
+    dimensions: "8 × 10 inches",
+    imageUrl: "/assets/images/Swoop.jpg",
+    categories: ["Animals"],
+    sold: true,
+    price: 250
+  },
+  {
+    id: 19,
+    title: "Time Well Spent",
+    description: "On unframed canvas.",
+    medium: "Oil on canvas",
+    dimensions: "16 × 20 inches",
+    imageUrl: "/assets/images/Time Well Spent.jpg",
+    categories: ["Landscape", "Figurative", "Western"],
+    sold: false,
+    price: 700
+  },
+  {
+    id: 20,
+    title: "Tiny Tyrant",
+    medium: "Oil on panel",
+    dimensions: "6 × 8 inches",
+    imageUrl: "/assets/images/Tiny Tyrant.jpg",
+    categories: ["Animals"],
+    sold: true,
+    price: 325
+  },
+  {
+    id: 21,
+    title: "Toby's Contentment",
+    medium: "Oil on canvas",
+    dimensions: "10 × 10 inches",
+    imageUrl: "/assets/images/Toby's Contentment.jpg",
+    categories: ["Figurative", "Animals"],
+    sold: true,
+    price: 375
+  },
+  {
+    id: 22,
+    title: "Under a Watchful Eye",
+    description: "On unframed canvas (with minimal damage).",
+    medium: "Oil on canvas",
+    dimensions: "10 × 20 inches",
+    imageUrl: "/assets/images/Under a Watchful Eye.jpg",
+    categories: ["Landscape"],
+    sold: false,
+    price: 250
+  },
+  {
+    id: 23,
+    title: "Water in the Gila",
+    medium: "Oil on canvas",
+    dimensions: "11 × 14 inches",
+    imageUrl: "/assets/images/Water in the Gila.jpg",
+    categories: ["Landscape"],
+    sold: false,
+    price: 500
   }
 ];
 
-export const categories = [...new Set(artCollection.map(piece => piece.category))];
+export const categories = [...new Set(artCollection.flatMap(piece => piece.categories))];
