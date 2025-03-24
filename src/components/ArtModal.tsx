@@ -176,7 +176,14 @@ const ArtModal = ({ art, artCollection, isOpen, onClose, onNavigate }: ArtModalP
                         
                         {!art.sold && (
                           <div className="ml-4">
-                            <Link to="/contact" onClick={onClose} className="btn btn-primary">
+                            <Link to="/contact" onClick={() => {
+                              // Close the modal first
+                              onClose();
+                              // Small delay to ensure modal closing completes
+                              setTimeout(() => {
+                                window.scrollTo(0, 0);
+                              }, 10);
+                            }} className="btn btn-primary">
                               Inquire About This Piece
                             </Link>
                           </div>

@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaTimes, FaChevronLeft, FaChevronRight, FaChevronUp, FaChevronDown } from 'react-icons/fa';
 import { ArtPiece } from '../data/artCollection';
+import { Link } from 'react-router-dom';
 
 interface PrintModalProps {
   art: ArtPiece | null;
@@ -270,12 +271,20 @@ const PrintModal = ({
                         </div>
                         
                         <div className="ml-4">
-                          <a 
-                            href="/contact" 
+                          <Link 
+                            to="/contact" 
                             className="btn btn-primary"
+                            onClick={() => {
+                              // Close the modal first
+                              onClose();
+                              // Small delay to ensure modal closing completes
+                              setTimeout(() => {
+                                window.scrollTo(0, 0);
+                              }, 10);
+                            }}
                           >
                             Contact for Purchase
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     </div>
