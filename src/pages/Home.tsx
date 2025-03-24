@@ -76,7 +76,7 @@ const Home = () => {
                 
                 <div className="featured-card-content">
                   <h3 className="featured-card-title">{art.title}</h3>
-                  <p className="featured-card-info">{art.year} | {art.medium}</p>
+                  <p className="featured-card-info">{art.medium}</p>
                   <p className="featured-card-description">{art.description}</p>
                   <Link 
                     to={`/gallery?id=${art.id}`} 
@@ -139,31 +139,6 @@ const Home = () => {
               />
             </motion.div>
           </div>
-        </div>
-      </section>
-
-      {/* Call to Action */}
-      <section className="cta-section">
-        <div className="container">
-          <h2 className="cta-title">Join Our Community</h2>
-          <p className="cta-text">
-            Subscribe to our newsletter to receive updates on new exhibitions, artist spotlights, and exclusive events.
-          </p>
-          
-          <form className="newsletter-form">
-            <input 
-              type="email" 
-              placeholder="Your email address" 
-              className="newsletter-input"
-              required
-            />
-            <button 
-              type="submit" 
-              className="btn btn-light"
-            >
-              Subscribe
-            </button>
-          </form>
         </div>
       </section>
     </div>
