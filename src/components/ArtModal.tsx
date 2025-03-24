@@ -164,19 +164,23 @@ const ArtModal = ({ art, artCollection, isOpen, onClose, onNavigate }: ArtModalP
                         </div>
                       )}
                       
-                      <div className="modal-specs">
-                        <p><span className="font-medium">Medium:</span> {art.medium}</p>
-                        <p><span className="font-medium">Dimensions:</span> {art.dimensions}</p>
-                        <p><span className="font-medium">Category:</span> {art.categories.join(', ')}</p>
-                        <p><span className="font-medium">Status:</span> {art.sold ? 'Sold' : 'Available'}</p>
-                        {!art.sold && art.price && <p><span className="font-medium">Price:</span> ${art.price}</p>}
+                      <div className="flex justify-between items-start">
+                        <div className="modal-specs">
+                          <p><span className="font-medium">Medium:</span> {art.medium}</p>
+                          <p><span className="font-medium">Dimensions:</span> {art.dimensions}</p>
+                          <p><span className="font-medium">Category:</span> {art.categories.join(', ')}</p>
+                          <p><span className="font-medium">Status:</span> {art.sold ? 'Sold' : 'Available'}</p>
+                          {!art.sold && art.price && <p><span className="font-medium">Price:</span> ${art.price}</p>}
+                        </div>
+                        
+                        {!art.sold && (
+                          <div className="ml-4">
+                            <button className="btn btn-primary">
+                              Inquire About This Piece
+                            </button>
+                          </div>
+                        )}
                       </div>
-                      
-                      {!art.sold && (
-                        <button className="btn btn-primary mt-6">
-                          Inquire About This Piece
-                        </button>
-                      )}
                     </div>
                   )}
                 </div>
