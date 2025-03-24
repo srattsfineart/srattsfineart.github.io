@@ -9,18 +9,27 @@ import type { ArtPiece } from '../data/artCollection';
 const Gallery = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
+  const [showAvailableOnly, setShowAvailableOnly] = useState<boolean>(false);
   const [filteredArt, setFilteredArt] = useState<ArtPiece[]>(artCollection);
   const [selectedArt, setSelectedArt] = useState<ArtPiece | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Filter art by category
+  // Filter art by category and availability
   useEffect(() => {
-    if (selectedCategory === 'All') {
-      setFilteredArt(artCollection);
-    } else {
-      setFilteredArt(artCollection.filter(art => art.categories.includes(selectedCategory)));
+    let filtered = [...artCollection];
+    
+    // Filter by category
+    if (selectedCategory !== 'All') {
+      filtered = filtered.filter(art => art.categories.includes(selectedCategory));
     }
-  }, [selectedCategory]);
+    
+    // Filter by availability
+    if (showAvailableOnly) {
+      filtered = filtered.filter(art => !art.sold);
+    }
+    
+    setFilteredArt(filtered);
+  }, [selectedCategory, showAvailableOnly]);
 
   // Check for art ID in URL params
   useEffect(() => {
@@ -49,6 +58,15 @@ const Gallery = () => {
     setSelectedCategory(category);
   };
 
+  const toggleAvailableOnly = () => {
+    setShowAvailableOnly(prev => !prev);
+  };
+
+  const handleNavigate = (art: ArtPiece) => {
+    setSelectedArt(art);
+    setSearchParams({ id: art.id.toString() });
+  };
+
   return (
     <div className="gallery-container">
       <div className="container">
@@ -72,6 +90,18 @@ const Gallery = () => {
               onClick={() => handleCategoryChange(category)} 
             />
           ))}
+          
+          <div className="filter-divider"></div>
+          
+          <label className="availability-toggle">
+            <input 
+              type="checkbox" 
+              checked={showAvailableOnly} 
+              onChange={toggleAvailableOnly}
+            />
+            <span className="toggle-slider"></span>
+            <span className="toggle-label">Available for Purchase</span>
+          </label>
         </div>
         
         {/* Art Grid */}
@@ -97,7 +127,7 @@ const Gallery = () => {
         
         {filteredArt.length === 0 && (
           <div className="no-results">
-            <p>No artworks found in this category.</p>
+            <p>No artworks found with the current filters.</p>
           </div>
         )}
       </div>
@@ -105,8 +135,10 @@ const Gallery = () => {
       {/* Art Modal */}
       <ArtModal 
         art={selectedArt} 
+        artCollection={artCollection}
         isOpen={isModalOpen} 
         onClose={handleCloseModal} 
+        onNavigate={handleNavigate}
       />
     </div>
   );

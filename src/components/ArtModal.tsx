@@ -1,15 +1,31 @@
-import { useEffect } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaTimes } from 'react-icons/fa';
+import { FaTimes, FaChevronLeft, FaChevronRight, FaChevronUp, FaChevronDown } from 'react-icons/fa';
 import { ArtPiece } from '../data/artCollection';
 
 interface ArtModalProps {
   art: ArtPiece | null;
+  artCollection: ArtPiece[];
   isOpen: boolean;
   onClose: () => void;
+  onNavigate: (art: ArtPiece) => void;
 }
 
-const ArtModal = ({ art, isOpen, onClose }: ArtModalProps) => {
+const ArtModal = ({ art, artCollection, isOpen, onClose, onNavigate }: ArtModalProps) => {
+  const imageRef = useRef<HTMLImageElement>(null);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [isInfoCollapsed, setIsInfoCollapsed] = useState<boolean>(false);
+
+  // Find current art index when art changes
+  useEffect(() => {
+    if (art) {
+      const index = artCollection.findIndex(item => item.id === art.id);
+      if (index !== -1) {
+        setCurrentIndex(index);
+      }
+    }
+  }, [art, artCollection]);
+
   // Prevent scrolling when modal is open
   useEffect(() => {
     if (isOpen) {
@@ -23,17 +39,46 @@ const ArtModal = ({ art, isOpen, onClose }: ArtModalProps) => {
     };
   }, [isOpen]);
 
-  // Close modal on escape key press
+  // Close modal on escape key press and handle arrow key navigation
   useEffect(() => {
-    const handleEsc = (e: KeyboardEvent) => {
+    const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
+      if (e.key === 'ArrowLeft') handlePrev();
+      if (e.key === 'ArrowRight') handleNext();
+      if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+        if (e.key === 'ArrowUp' && !isInfoCollapsed) {
+          setIsInfoCollapsed(true);
+        } else if (e.key === 'ArrowDown' && isInfoCollapsed) {
+          setIsInfoCollapsed(false);
+        }
+      }
     };
     
-    window.addEventListener('keydown', handleEsc);
+    window.addEventListener('keydown', handleKeyDown);
     return () => {
-      window.removeEventListener('keydown', handleEsc);
+      window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [onClose]);
+  }, [onClose, currentIndex, isInfoCollapsed]);
+
+  const handleNext = () => {
+    if (!artCollection.length) return;
+    
+    const nextIndex = (currentIndex + 1) % artCollection.length;
+    const nextArt = artCollection[nextIndex];
+    onNavigate(nextArt);
+  };
+
+  const handlePrev = () => {
+    if (!artCollection.length) return;
+    
+    const prevIndex = (currentIndex - 1 + artCollection.length) % artCollection.length;
+    const prevArt = artCollection[prevIndex];
+    onNavigate(prevArt);
+  };
+
+  const toggleInfoCollapse = () => {
+    setIsInfoCollapsed(prev => !prev);
+  };
 
   if (!art) return null;
 
@@ -62,31 +107,79 @@ const ArtModal = ({ art, isOpen, onClose }: ArtModalProps) => {
               <FaTimes size={24} />
             </button>
             
-            <div className="modal-body">
+            <div className="modal-body bottom-info-layout">
               <div className="modal-image">
+                {/* Navigation buttons */}
+                <button 
+                  className="carousel-nav carousel-prev" 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handlePrev();
+                  }}
+                  aria-label="Previous artwork"
+                >
+                  <FaChevronLeft size={24} />
+                </button>
+                
                 <img
+                  ref={imageRef}
                   src={art.imageUrl}
                   alt={art.title}
                 />
+                
+                <button 
+                  className="carousel-nav carousel-next" 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleNext();
+                  }}
+                  aria-label="Next artwork"
+                >
+                  <FaChevronRight size={24} />
+                </button>
+                
+                {/* Carousel indicator */}
+                <div className="carousel-indicator">
+                  <span>{currentIndex + 1}</span> / <span>{artCollection.length}</span>
+                </div>
               </div>
               
-              <div className="modal-details">
-                <h2 className="modal-title font-serif">{art.title}</h2>
-                {/* <p className="modal-info">{art.year}</p> */}
-                
-                <div className="modal-description">
-                  <p>{art.description}</p>
-                </div>
-                
-                <div className="modal-specs">
-                  <p><span className="font-medium">Medium:</span> {art.medium}</p>
-                  <p><span className="font-medium">Dimensions:</span> {art.dimensions}</p>
-                  <p><span className="font-medium">Category:</span> {art.categories.join(', ')}</p>
-                </div>
-                
-                <button className="btn mt-6">
-                  Inquire About This Piece
+              <div className={`modal-details-container ${isInfoCollapsed ? 'collapsed' : ''}`}>
+                <button 
+                  className="info-collapse-toggle"
+                  onClick={toggleInfoCollapse}
+                  aria-label={isInfoCollapsed ? "Expand artwork details" : "Collapse artwork details"}
+                >
+                  {isInfoCollapsed ? <FaChevronUp size={16} /> : <FaChevronDown size={16} />}
                 </button>
+                
+                <div className="modal-details">
+                  <h2 className="modal-title font-serif">{art.title}</h2>
+                  
+                  {!isInfoCollapsed && (
+                    <div className="modal-details-content">
+                      {art.description && (
+                        <div className="modal-description">
+                          <p>{art.description}</p>
+                        </div>
+                      )}
+                      
+                      <div className="modal-specs">
+                        <p><span className="font-medium">Medium:</span> {art.medium}</p>
+                        <p><span className="font-medium">Dimensions:</span> {art.dimensions}</p>
+                        <p><span className="font-medium">Category:</span> {art.categories.join(', ')}</p>
+                        <p><span className="font-medium">Status:</span> {art.sold ? 'Sold' : 'Available'}</p>
+                        {!art.sold && art.price && <p><span className="font-medium">Price:</span> ${art.price}</p>}
+                      </div>
+                      
+                      {!art.sold && (
+                        <button className="btn btn-primary mt-6">
+                          Inquire About This Piece
+                        </button>
+                      )}
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </motion.div>
