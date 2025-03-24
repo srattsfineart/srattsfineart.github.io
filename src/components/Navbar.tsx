@@ -38,18 +38,29 @@ const Navbar = () => {
         transition: 'all 0.3s ease',
         backgroundColor: scrolled ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0.85)',
         backdropFilter: 'blur(8px)',
-        padding: scrolled ? '0.5rem 0' : '1.5rem 0',
+        padding: scrolled ? '0.5rem 0' : '1.25rem 0',
         boxShadow: scrolled ? '0 2px 10px rgba(0, 0, 0, 0.1)' : '0 1px 5px rgba(0, 0, 0, 0.05)'
       }}
     >
       <div className="container flex justify-between items-center">
-        <Link to="/" className="font-serif" style={{ 
+        <Link to="/" className="font-serif flex items-center" style={{ 
           fontSize: '1.5rem', 
           letterSpacing: '0.05em',
           color: '#000',
           fontWeight: 600
         }}>
-          S. Ratts Fine Art
+          <img 
+            src="/assets/images/SRatts Signature Black.png" 
+            alt="S. Ratts Signature" 
+            style={{ 
+              maxWidth: '70px', 
+              height: 'auto',
+              marginRight: '8px',
+              display: 'inline-block',
+              verticalAlign: 'middle'
+            }}
+          />
+          <span style={{ verticalAlign: 'middle' }}>S. Ratts Fine Art</span>
         </Link>
 
         {/* Desktop Menu */}

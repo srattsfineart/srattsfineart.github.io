@@ -19,14 +19,21 @@ const Home = () => {
         </div>
         
         <div className="hero-content">
-          <motion.h1 
+          <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="hero-title"
           >
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: 0 }}>
+            <img 
+              src="/assets/images/SRatts Signature White.png" 
+              alt="S. Ratts Signature" 
+              style={{ marginBottom: '-10px' }}
+            />
             S. Ratts Fine Art
-          </motion.h1>
+          </div>
+          </motion.h2>
           
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
