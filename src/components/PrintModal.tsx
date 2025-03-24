@@ -21,12 +21,13 @@ const PrintModal = ({
   onClose, 
   onNavigate, 
   selectedSize, 
-  isPrintView,
+  isPrintView: initialIsPrintView,
   onSizeChange 
 }: PrintModalProps) => {
   const imageRef = useRef<HTMLImageElement>(null);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isInfoCollapsed, setIsInfoCollapsed] = useState<boolean>(false);
+  const [isPrintView, setIsPrintView] = useState<boolean>(initialIsPrintView);
 
   // Find current item index when item changes
   useEffect(() => {
@@ -37,6 +38,11 @@ const PrintModal = ({
       }
     }
   }, [art, artCollection]);
+
+  // Update internal isPrintView when prop changes
+  useEffect(() => {
+    setIsPrintView(initialIsPrintView);
+  }, [initialIsPrintView]);
 
   // Prevent scrolling when modal is open
   useEffect(() => {
@@ -92,10 +98,26 @@ const PrintModal = ({
     setIsInfoCollapsed(prev => !prev);
   };
 
+  const toggleViewType = () => {
+    if (!art) return;
+    
+    // Toggle between print and card view
+    const newIsPrintView = !isPrintView;
+    setIsPrintView(newIsPrintView);
+    
+    // Update selected size based on the new view type
+    if (newIsPrintView && art.printSizes && art.printSizes.length > 0) {
+      onSizeChange(art.printSizes[0]);
+    } else if (!newIsPrintView && art.cardSizes && art.cardSizes.length > 0) {
+      onSizeChange(art.cardSizes[0]);
+    }
+  };
+
   if (!art) return null;
 
   const sizes = isPrintView ? art.printSizes : art.cardSizes;
   const price = isPrintView ? art.printPrice : art.cardPrice;
+  const canToggleView = (isPrintView && art.availableAsCard) || (!isPrintView && art.availableAsPrint);
 
   return (
     <AnimatePresence>
@@ -173,6 +195,30 @@ const PrintModal = ({
                   
                   {!isInfoCollapsed && (
                     <div className="modal-details-content">
+                      {/* Toggle between Print and Card view */}
+                      {canToggleView && (
+                        <div className="view-toggle mb-4">
+                          <div className="flex justify-center space-x-4">
+                            <button
+                              className={`filter-btn ${isPrintView ? 'active' : ''}`}
+                              onClick={() => {
+                                if (!isPrintView) toggleViewType();
+                              }}
+                            >
+                              Print
+                            </button>
+                            <button
+                              className={`filter-btn ${!isPrintView ? 'active' : ''}`}
+                              onClick={() => {
+                                if (isPrintView) toggleViewType();
+                              }}
+                            >
+                              Card
+                            </button>
+                          </div>
+                        </div>
+                      )}
+                      
                       {art.description && (
                         <div className="modal-description">
                           <p>{art.description}</p>
