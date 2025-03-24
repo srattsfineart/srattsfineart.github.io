@@ -252,12 +252,12 @@ export const artCollection: ArtPiece[] = [
   {
     id: 24,
     title: "It's Not Polite to Steer",
-    medium: "?",
-    dimensions: "?",
+    medium: "Oil on canvas",
+    dimensions: "9 × 12 inches",
     imageUrl: "/assets/images/It's Not Polite to Steer.jpg",
-    categories: ["Animals"],
-    sold: true,
-    price: 1
+    categories: ["Animals", "Western"],
+    sold: false,
+    price: 375
   }
 ];
 

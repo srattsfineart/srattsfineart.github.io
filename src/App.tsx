@@ -5,6 +5,7 @@ import Gallery from './pages/Gallery'
 import About from './pages/About'
 import Contact from './pages/Contact'
 import Commissions from './pages/Commissions'
+import PrintsAndCards from './pages/PrintsAndCards'
 import './App.css'
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/commissions" element={<Commissions />} />
+          <Route path="/prints-and-cards" element={<PrintsAndCards />} />
         </Routes>
       </Layout>
     </Router>

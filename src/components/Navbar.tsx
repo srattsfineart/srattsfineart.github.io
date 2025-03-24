@@ -51,6 +51,7 @@ const Navbar = () => {
         <div className="desktop-menu md:flex space-x-8">
           <NavLink to="/">Home</NavLink>
           <NavLink to="/gallery">Gallery</NavLink>
+          <NavLink to="/prints-and-cards">Prints & Cards</NavLink>
           <NavLink to="/commissions">Commissions</NavLink>
           <NavLink to="/about">About</NavLink>
           <NavLink to="/contact">Contact</NavLink>
@@ -81,6 +82,7 @@ const Navbar = () => {
           <div className="container flex flex-col" style={{ padding: '1rem 0' }}>
             <MobileNavLink to="/">Home</MobileNavLink>
             <MobileNavLink to="/gallery">Gallery</MobileNavLink>
+            <MobileNavLink to="/prints-and-cards">Prints & Cards</MobileNavLink>
             <MobileNavLink to="/commissions">Commissions</MobileNavLink>
             <MobileNavLink to="/about">About</MobileNavLink>
             <MobileNavLink to="/contact">Contact</MobileNavLink>
