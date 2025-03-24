@@ -219,15 +219,9 @@ const PrintModal = ({
                         </div>
                       )}
                       
-                      {art.description && (
-                        <div className="modal-description">
-                          <p>{art.description}</p>
-                        </div>
-                      )}
-                      
                       <div className="flex justify-between items-start">
                         <div className="modal-specs">
-                          <p><span className="font-medium">Type:</span> {isPrintView ? 'Fine Art Print' : 'Greeting Card'}</p>
+                          <p><span className="font-medium">Type:</span> <strong>{isPrintView ? 'Fine Art Print' : 'Greeting Card'}</strong></p>
                           <p><span className="font-medium">Medium:</span> {art.medium}</p>
                           {isPrintView ? (
                             <p className="mb-1">Material: Premium archival paper</p>

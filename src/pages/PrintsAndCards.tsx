@@ -78,7 +78,8 @@ const PrintsAndCards = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="print-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+            className="print-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow cursor-pointer"
+            onClick={() => handleItemClick(art, art.availableAsPrint || false)}
           >
             <div className="relative aspect-w-4 aspect-h-3">
               <img 
@@ -114,29 +115,24 @@ const PrintsAndCards = () => {
                     : ' Card'
                 }
               </p>
-              <div className="flex flex-col space-y-3">
-                {art.availableAsPrint && (
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm font-medium">Print: ${art.printPrice}+</span>
-                    <button 
-                      className="filter-btn"
-                      onClick={() => handleItemClick(art, true)}
-                    >
-                      View Print
-                    </button>
-                  </div>
-                )}
-                {art.availableAsCard && (
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm font-medium">Card: ${art.cardPrice}</span>
-                    <button 
-                      className="filter-btn"
-                      onClick={() => handleItemClick(art, false)}
-                    >
-                      View Card
-                    </button>
-                  </div>
-                )}
+              <div className="flex justify-between items-center">
+                <div className="space-y-1">
+                  {art.availableAsPrint && (
+                    <div className="text-sm font-medium">Print: ${art.printPrice}+</div>
+                  )}
+                  {art.availableAsCard && (
+                    <div className="text-sm font-medium">Card: ${art.cardPrice}</div>
+                  )}
+                </div>
+                <button 
+                  className="filter-btn"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleItemClick(art, art.availableAsPrint || false);
+                  }}
+                >
+                  View Details
+                </button>
               </div>
             </div>
           </motion.div>
