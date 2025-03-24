@@ -59,94 +59,88 @@ const PrintsAndCards = () => {
     setSelectedSize(size);
   };
 
-  // Render prints section
-  const renderPrints = () => {
-    const prints = artCollection.filter(art => 
-      (selectedType === 'all' || selectedType === 'print') && art.availableAsPrint
-    );
-    
-    if (prints.length === 0) return null;
+  // Render the consolidated items grid
+  const renderItems = () => {
+    if (printsAndCardsCollection.length === 0) {
+      return (
+        <div className="text-center py-12">
+          <p className="text-xl">No items found with the current filter.</p>
+        </div>
+      );
+    }
     
     return (
-      <div className="mb-12">
-        {selectedType === 'all' && <h2 className="text-2xl font-serif mb-6">Prints</h2>}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {prints.map(art => (
-            <motion.div 
-              key={`print-${art.id}`}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="print-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
-              onClick={() => handleItemClick(art, true)}
-            >
-              <div className="relative aspect-w-4 aspect-h-3">
-                <img 
-                  src={art.imageUrl} 
-                  alt={art.title} 
-                  className="w-full h-64 object-cover"
-                />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {printsAndCardsCollection.map(art => (
+          <motion.div 
+            key={`item-${art.id}`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="print-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+          >
+            <div className="relative aspect-w-4 aspect-h-3">
+              <img 
+                src={art.imageUrl} 
+                alt={art.title} 
+                className="w-full h-64 object-cover"
+              />
+              <div className="absolute inset-x-0 bottom-0 flex justify-between p-2">
+                {art.availableAsPrint && (
+                  <div className="m-2">
+                    <span className="text-xs font-medium py-2 px-3 bg-black bg-opacity-40 backdrop-blur-sm text-white rounded-md">
+                      PRINT
+                    </span>
+                  </div>
+                )}
+                {!art.availableAsPrint && <div></div>}
+                {art.availableAsCard && (
+                  <div className="m-2">
+                    <span className="text-xs font-medium py-2 px-3 bg-black bg-opacity-40 backdrop-blur-sm text-white rounded-md">
+                      CARD
+                    </span>
+                  </div>
+                )}
               </div>
-              <div className="p-4">
-                <h3 className="text-xl font-serif mb-2">{art.title}</h3>
-                <p className="text-gray-600 mb-3">Fine art print on archival paper</p>
-                <div className="flex justify-between items-center">
-                  <span className="text-lg font-medium">${art.printPrice}+</span>
-                  <button className="filter-btn">
-                    View Details
-                  </button>
-                </div>
+            </div>
+            <div className="p-4">
+              <h3 className="text-xl font-serif mb-2">{art.title}</h3>
+              <p className="text-gray-600 mb-3">Available as: 
+                {art.availableAsPrint && art.availableAsCard 
+                  ? ' Print & Card' 
+                  : art.availableAsPrint 
+                    ? ' Print' 
+                    : ' Card'
+                }
+              </p>
+              <div className="flex flex-col space-y-3">
+                {art.availableAsPrint && (
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm font-medium">Print: ${art.printPrice}+</span>
+                    <button 
+                      className="filter-btn"
+                      onClick={() => handleItemClick(art, true)}
+                    >
+                      View Print
+                    </button>
+                  </div>
+                )}
+                {art.availableAsCard && (
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm font-medium">Card: ${art.cardPrice}</span>
+                    <button 
+                      className="filter-btn"
+                      onClick={() => handleItemClick(art, false)}
+                    >
+                      View Card
+                    </button>
+                  </div>
+                )}
               </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    );
-  };
-
-  // Render cards section
-  const renderCards = () => {
-    const cards = artCollection.filter(art => 
-      (selectedType === 'all' || selectedType === 'card') && art.availableAsCard
-    );
-    
-    if (cards.length === 0) return null;
-    
-    return (
-      <div>
-        {selectedType === 'all' && <h2 className="text-2xl font-serif mb-6">Cards</h2>}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {cards.map(art => (
-            <motion.div 
-              key={`card-${art.id}`}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="print-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
-              onClick={() => handleItemClick(art, false)}
-            >
-              <div className="relative aspect-w-4 aspect-h-3">
-                <img 
-                  src={art.imageUrl} 
-                  alt={art.title} 
-                  className="w-full h-64 object-cover"
-                />
-              </div>
-              <div className="p-4">
-                <h3 className="text-xl font-serif mb-2">{art.title}</h3>
-                <p className="text-gray-600 mb-3">Premium quality greeting card with envelope</p>
-                <div className="flex justify-between items-center">
-                  <span className="text-lg font-medium">${art.cardPrice}</span>
-                  <button className="filter-btn">
-                    View Details
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+            </div>
+          </motion.div>
+        ))}
       </div>
     );
   };
@@ -185,23 +179,7 @@ const PrintsAndCards = () => {
         </div>
 
         {/* Items Grid */}
-        {selectedType === 'all' ? (
-          <>
-            {renderPrints()}
-            {renderCards()}
-          </>
-        ) : selectedType === 'print' ? (
-          renderPrints()
-        ) : (
-          renderCards()
-        )}
-
-        {/* Empty State */}
-        {printsAndCardsCollection.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-xl">No items found with the current filter.</p>
-          </div>
-        )}
+        {renderItems()}
 
         {/* Modal */}
         <PrintModal
