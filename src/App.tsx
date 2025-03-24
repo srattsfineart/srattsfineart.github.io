@@ -6,11 +6,13 @@ import About from './pages/About'
 import Contact from './pages/Contact'
 import Commissions from './pages/Commissions'
 import PrintsAndCards from './pages/PrintsAndCards'
+import ScrollToTop from './components/ScrollToTop'
 import './App.css'
 
 function App() {
   return (
     <Router basename="/">
+      <ScrollToTop />
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />

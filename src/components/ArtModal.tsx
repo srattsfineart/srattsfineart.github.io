@@ -1,7 +1,8 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaTimes, FaChevronLeft, FaChevronRight, FaChevronUp, FaChevronDown } from 'react-icons/fa';
 import { ArtPiece } from '../data/artCollection';
+import { Link } from 'react-router-dom';
 
 interface ArtModalProps {
   art: ArtPiece | null;
@@ -25,6 +26,22 @@ const ArtModal = ({ art, artCollection, isOpen, onClose, onNavigate }: ArtModalP
       }
     }
   }, [art, artCollection]);
+
+  const handleNext = useCallback(() => {
+    if (!artCollection.length) return;
+    
+    const nextIndex = (currentIndex + 1) % artCollection.length;
+    const nextArt = artCollection[nextIndex];
+    onNavigate(nextArt);
+  }, [artCollection, currentIndex, onNavigate]);
+
+  const handlePrev = useCallback(() => {
+    if (!artCollection.length) return;
+    
+    const prevIndex = (currentIndex - 1 + artCollection.length) % artCollection.length;
+    const prevArt = artCollection[prevIndex];
+    onNavigate(prevArt);
+  }, [artCollection, currentIndex, onNavigate]);
 
   // Prevent scrolling when modal is open
   useEffect(() => {
@@ -58,23 +75,7 @@ const ArtModal = ({ art, artCollection, isOpen, onClose, onNavigate }: ArtModalP
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [onClose, currentIndex, isInfoCollapsed]);
-
-  const handleNext = () => {
-    if (!artCollection.length) return;
-    
-    const nextIndex = (currentIndex + 1) % artCollection.length;
-    const nextArt = artCollection[nextIndex];
-    onNavigate(nextArt);
-  };
-
-  const handlePrev = () => {
-    if (!artCollection.length) return;
-    
-    const prevIndex = (currentIndex - 1 + artCollection.length) % artCollection.length;
-    const prevArt = artCollection[prevIndex];
-    onNavigate(prevArt);
-  };
+  }, [onClose, isInfoCollapsed, handleNext, handlePrev]);
 
   const toggleInfoCollapse = () => {
     setIsInfoCollapsed(prev => !prev);
@@ -175,9 +176,9 @@ const ArtModal = ({ art, artCollection, isOpen, onClose, onNavigate }: ArtModalP
                         
                         {!art.sold && (
                           <div className="ml-4">
-                            <button className="btn btn-primary">
+                            <Link to="/contact" onClick={onClose} className="btn btn-primary">
                               Inquire About This Piece
-                            </button>
+                            </Link>
                           </div>
                         )}
                       </div>

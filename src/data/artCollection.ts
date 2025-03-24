@@ -30,7 +30,7 @@ export const artCollection: ArtPiece[] = [
     categories: ["Figurative", "Animals"],
     sold: true,
     artPrice: 650,
-    availableAsPrint: false,
+    availableAsPrint: true,
     printPrice: 25,
     printSizes: ['8×10', '11×14', '16×20'],
     availableAsCard: true,

@@ -113,6 +113,13 @@ const PrintModal = ({
     }
   };
 
+  // Auto-select first card size when component mounts or art changes
+  useEffect(() => {
+    if (art && !isPrintView && art.cardSizes && art.cardSizes.length > 0 && !selectedSize) {
+      onSizeChange(art.cardSizes[0]);
+    }
+  }, [art, isPrintView, onSizeChange, selectedSize]);
+
   if (!art) return null;
 
   const sizes = isPrintView ? art.printSizes : art.cardSizes;
@@ -222,7 +229,6 @@ const PrintModal = ({
                       <div className="flex justify-between items-start">
                         <div className="modal-specs">
                           <p><span className="font-medium">Type:</span> <strong>{isPrintView ? 'Fine Art Print' : 'Greeting Card'}</strong></p>
-                          <p><span className="font-medium">Medium:</span> {art.medium}</p>
                           {isPrintView ? (
                             <p className="mb-1">Material: Giclee Print on stretched bars</p>
                           ) : (
@@ -252,7 +258,14 @@ const PrintModal = ({
                           <p className="mt-2"><span className="font-medium">Price:</span> {isPrintView ? (
                             <span>${price} {price && sizes && sizes.length > 1 ? `- $${price + 20} depending on size` : ''}</span>
                           ) : (
-                            <span>${price}</span>
+                            <span>
+                              ${price} per card
+                              {art.cardBundleOfFourPrice && (
+                                <span className="block text-sm mt-1">
+                                  Bundle of 4: ${art.cardBundleOfFourPrice}
+                                </span>
+                              )}
+                            </span>
                           )}</p>
                         </div>
                         

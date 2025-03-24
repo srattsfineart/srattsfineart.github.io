@@ -125,12 +125,19 @@ const Home = () => {
               <p className="about-text">
                 The western lifestyle and landscapes are my most meaningful inspiration. Oil painting allows me to express on canvas the life, energy, and beauty of those subjects with color, light, and texture.
               </p>
-              <Link 
-                to="/about" 
+              <a 
+                href="/about"
                 className="about-link"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.scrollTo(0, 0);
+                  setTimeout(() => {
+                    window.location.href = '/about';
+                  }, 10);
+                }}
               >
                 Learn More About the Artist
-              </Link>
+              </a>
             </motion.div>
             
             <motion.div
