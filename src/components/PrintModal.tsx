@@ -3,23 +3,35 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaTimes, FaChevronLeft, FaChevronRight, FaChevronUp, FaChevronDown } from 'react-icons/fa';
 import { ArtPiece } from '../data/artCollection';
 
-interface ArtModalProps {
+interface PrintModalProps {
   art: ArtPiece | null;
   artCollection: ArtPiece[];
   isOpen: boolean;
   onClose: () => void;
   onNavigate: (art: ArtPiece) => void;
+  selectedSize: string | null;
+  isPrintView: boolean;
+  onSizeChange: (size: string) => void;
 }
 
-const ArtModal = ({ art, artCollection, isOpen, onClose, onNavigate }: ArtModalProps) => {
+const PrintModal = ({ 
+  art, 
+  artCollection, 
+  isOpen, 
+  onClose, 
+  onNavigate, 
+  selectedSize, 
+  isPrintView,
+  onSizeChange 
+}: PrintModalProps) => {
   const imageRef = useRef<HTMLImageElement>(null);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isInfoCollapsed, setIsInfoCollapsed] = useState<boolean>(false);
 
-  // Find current art index when art changes
+  // Find current item index when item changes
   useEffect(() => {
     if (art) {
-      const index = artCollection.findIndex(item => item.id === art.id);
+      const index = artCollection.findIndex(i => i.id === art.id);
       if (index !== -1) {
         setCurrentIndex(index);
       }
@@ -64,16 +76,16 @@ const ArtModal = ({ art, artCollection, isOpen, onClose, onNavigate }: ArtModalP
     if (!artCollection.length) return;
     
     const nextIndex = (currentIndex + 1) % artCollection.length;
-    const nextArt = artCollection[nextIndex];
-    onNavigate(nextArt);
+    const nextItem = artCollection[nextIndex];
+    onNavigate(nextItem);
   };
 
   const handlePrev = () => {
     if (!artCollection.length) return;
     
     const prevIndex = (currentIndex - 1 + artCollection.length) % artCollection.length;
-    const prevArt = artCollection[prevIndex];
-    onNavigate(prevArt);
+    const prevItem = artCollection[prevIndex];
+    onNavigate(prevItem);
   };
 
   const toggleInfoCollapse = () => {
@@ -81,6 +93,9 @@ const ArtModal = ({ art, artCollection, isOpen, onClose, onNavigate }: ArtModalP
   };
 
   if (!art) return null;
+
+  const sizes = isPrintView ? art.printSizes : art.cardSizes;
+  const price = isPrintView ? art.printPrice : art.cardPrice;
 
   return (
     <AnimatePresence>
@@ -116,7 +131,7 @@ const ArtModal = ({ art, artCollection, isOpen, onClose, onNavigate }: ArtModalP
                     e.stopPropagation();
                     handlePrev();
                   }}
-                  aria-label="Previous artwork"
+                  aria-label="Previous item"
                 >
                   <FaChevronLeft size={24} />
                 </button>
@@ -133,7 +148,7 @@ const ArtModal = ({ art, artCollection, isOpen, onClose, onNavigate }: ArtModalP
                     e.stopPropagation();
                     handleNext();
                   }}
-                  aria-label="Next artwork"
+                  aria-label="Next item"
                 >
                   <FaChevronRight size={24} />
                 </button>
@@ -148,7 +163,7 @@ const ArtModal = ({ art, artCollection, isOpen, onClose, onNavigate }: ArtModalP
                 <button 
                   className="info-collapse-toggle"
                   onClick={toggleInfoCollapse}
-                  aria-label={isInfoCollapsed ? "Expand artwork details" : "Collapse artwork details"}
+                  aria-label={isInfoCollapsed ? "Expand item details" : "Collapse item details"}
                 >
                   {isInfoCollapsed ? <FaChevronUp size={16} /> : <FaChevronDown size={16} />}
                 </button>
@@ -166,20 +181,49 @@ const ArtModal = ({ art, artCollection, isOpen, onClose, onNavigate }: ArtModalP
                       
                       <div className="flex justify-between items-start">
                         <div className="modal-specs">
+                          <p><span className="font-medium">Type:</span> {isPrintView ? 'Fine Art Print' : 'Greeting Card'}</p>
                           <p><span className="font-medium">Medium:</span> {art.medium}</p>
-                          <p><span className="font-medium">Dimensions:</span> {art.dimensions}</p>
-                          <p><span className="font-medium">Category:</span> {art.categories.join(', ')}</p>
-                          <p><span className="font-medium">Status:</span> {art.sold ? 'Sold' : 'Available'}</p>
-                          {!art.sold && art.artPrice && <p><span className="font-medium">Price:</span> ${art.artPrice}</p>}
+                          {isPrintView ? (
+                            <p className="mb-1">Material: Premium archival paper</p>
+                          ) : (
+                            <p className="mb-1">Includes: Matching envelope</p>
+                          )}
+                          
+                          {sizes && sizes.length > 0 && (
+                            <div className="mb-4 mt-4">
+                              <p className="font-medium mb-2">Size:</p>
+                              <div className="flex flex-wrap gap-2">
+                                {sizes.map(size => (
+                                  <button
+                                    key={size}
+                                    className={`filter-btn ${selectedSize === size ? 'active' : ''}`}
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      onSizeChange(size);
+                                    }}
+                                  >
+                                    {size}
+                                  </button>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                          
+                          <p className="mt-2"><span className="font-medium">Price:</span> {isPrintView ? (
+                            <span>${price} {price && sizes && sizes.length > 1 ? `- $${price + 20} depending on size` : ''}</span>
+                          ) : (
+                            <span>${price}</span>
+                          )}</p>
                         </div>
                         
-                        {!art.sold && (
-                          <div className="ml-4">
-                            <button className="btn btn-primary">
-                              Inquire About This Piece
-                            </button>
-                          </div>
-                        )}
+                        <div className="ml-4">
+                          <a 
+                            href="/contact" 
+                            className="btn btn-primary"
+                          >
+                            Contact for Purchase
+                          </a>
+                        </div>
                       </div>
                     </div>
                   )}
@@ -193,4 +237,4 @@ const ArtModal = ({ art, artCollection, isOpen, onClose, onNavigate }: ArtModalP
   );
 };
 
-export default ArtModal;
+export default PrintModal;

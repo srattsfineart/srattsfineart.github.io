@@ -6,8 +6,17 @@ export interface ArtPiece {
   dimensions: string;
   imageUrl: string;
   categories: string[];
+  
   sold: boolean;
-  price: number;
+  artPrice: number;
+  
+  availableAsPrint?: boolean;
+  printPrice?: number;
+  printSizes?: string[];
+  
+  availableAsCard?: boolean;
+  cardPrice?: number;
+  cardSizes?: string[];
 }
 
 export const artCollection: ArtPiece[] = [
@@ -19,7 +28,13 @@ export const artCollection: ArtPiece[] = [
     imageUrl: "/assets/images/A Day in Saguache.jpg",
     categories: ["Figurative", "Animals"],
     sold: true,
-    price: 650
+    artPrice: 650,
+    availableAsPrint: true,
+    printPrice: 25,
+    printSizes: ['8×10', '11×14', '16×20'],
+    availableAsCard: true,
+    cardPrice: 5,
+    cardSizes: ['8×10', '11×14', '16×20']
   },
   {
     id: 2,
@@ -30,7 +45,13 @@ export const artCollection: ArtPiece[] = [
     imageUrl: "/assets/images/A Dollop of Daisies.jpg",
     categories: ["Animals", "Western"],
     sold: false,
-    price: 100
+    artPrice: 100,
+    availableAsPrint: true,
+    printPrice: 25,
+    printSizes: ['8×10', '11×14', '16×20'],
+    availableAsCard: true,
+    cardPrice: 5,
+    cardSizes: ['8×10', '11×14', '16×20']
   },
   {
     id: 3,
@@ -40,7 +61,13 @@ export const artCollection: ArtPiece[] = [
     imageUrl: "/assets/images/Ankole Watusi in Pennsylvania.jpg",
     categories: ["Animals"],
     sold: true,
-    price: 675
+    artPrice: 675,
+    availableAsPrint: true,
+    printPrice: 30,
+    printSizes: ['8×10', '11×14', '16×20'],
+    availableAsCard: true,
+    cardPrice: 5,
+    cardSizes: ['8×10', '11×14', '16×20']
   },
   {
     id: 4,
@@ -50,7 +77,13 @@ export const artCollection: ArtPiece[] = [
     imageUrl: "/assets/images/Beauty in Desolation.jpg",
     categories: ["Landscape"],
     sold: true,
-    price: 150
+    artPrice: 150,
+    availableAsPrint: true,
+    printPrice: 25,
+    printSizes: ['8×10', '11×14', '16×20'],
+    availableAsCard: true,
+    cardPrice: 5,
+    cardSizes: ['8×10', '11×14', '16×20']
   },
   {
     id: 5,
@@ -60,7 +93,13 @@ export const artCollection: ArtPiece[] = [
     imageUrl: "/assets/images/Butterfly Pavillion Tuscon.jpg",
     categories: ["Landscape"],
     sold: true,
-    price: 325
+    artPrice: 325,
+    availableAsPrint: true,
+    printPrice: 30,
+    printSizes: ['8×10', '11×14', '16×20'],
+    availableAsCard: true,
+    cardPrice: 5,
+    cardSizes: ['8×10', '11×14', '16×20']
   },
   {
     id: 6,
@@ -70,7 +109,13 @@ export const artCollection: ArtPiece[] = [
     imageUrl: "/assets/images/Casper and Doug.jpg",
     categories: ["Commision", "Animals"],
     sold: true,
-    price: 500
+    artPrice: 500,
+    availableAsPrint: true,
+    printPrice: 30,
+    printSizes: ['8×10', '11×14', '16×20'],
+    availableAsCard: true,
+    cardPrice: 5,
+    cardSizes: ['8×10', '11×14', '16×20']
   },
   {
     id: 7,
@@ -80,7 +125,13 @@ export const artCollection: ArtPiece[] = [
     imageUrl: "/assets/images/Cow in Globemallow.jpg",
     categories: ["Animals"],
     sold: true,
-    price: 500
+    artPrice: 500,
+    availableAsPrint: true,
+    printPrice: 30,
+    printSizes: ['8×10', '11×14', '16×20'],
+    availableAsCard: true,
+    cardPrice: 5,
+    cardSizes: ['8×10', '11×14', '16×20']
   },
   {
     id: 8,
@@ -91,7 +142,13 @@ export const artCollection: ArtPiece[] = [
     imageUrl: "/assets/images/Evening Blooms.jpg",
     categories: ["Landscape"],
     sold: false,
-    price: 225
+    artPrice: 225,
+    availableAsPrint: true,
+    printPrice: 25,
+    printSizes: ['8×10', '11×14', '16×20'],
+    availableAsCard: true,
+    cardPrice: 5,
+    cardSizes: ['8×10', '11×14', '16×20']
   },
   {
     id: 9,
@@ -102,7 +159,13 @@ export const artCollection: ArtPiece[] = [
     imageUrl: "/assets/images/Evening Color.jpg",
     categories: ["Landscape"],
     sold: false,
-    price: 175
+    artPrice: 175,
+    availableAsPrint: true,
+    printPrice: 25,
+    printSizes: ['8×10', '11×14', '16×20'],
+    availableAsCard: true,
+    cardPrice: 5,
+    cardSizes: ['8×10', '11×14', '16×20']
   },
   {
     id: 10,
@@ -112,7 +175,13 @@ export const artCollection: ArtPiece[] = [
     imageUrl: "/assets/images/In Pursuit of Two Feet.jpg",
     categories: ["Western", "Animals", "Figurative"],
     sold: true,
-    price: 175
+    artPrice: 175,
+    availableAsPrint: true,
+    printPrice: 25,
+    printSizes: ['8×10', '11×14', '16×20'],
+    availableAsCard: true,
+    cardPrice: 5,
+    cardSizes: ['8×10', '11×14', '16×20']
   },
   {
     id: 11,
@@ -123,7 +192,13 @@ export const artCollection: ArtPiece[] = [
     imageUrl: "/assets/images/Living an American Dream.jpg",
     categories: ["Western", "Animals", "Figurative"],
     sold: false,
-    price: 225
+    artPrice: 225,
+    availableAsPrint: true,
+    printPrice: 25,
+    printSizes: ['8×10', '11×14', '16×20'],
+    availableAsCard: true,
+    cardPrice: 5,
+    cardSizes: ['8×10', '11×14', '16×20']
   },
   {
     id: 12,
@@ -133,7 +208,13 @@ export const artCollection: ArtPiece[] = [
     imageUrl: "/assets/images/Her American Dream.jpg",
     categories: ["Western", "Animals", "Figurative"],
     sold: true,
-    price: 250
+    artPrice: 250,
+    availableAsPrint: true,
+    printPrice: 30,
+    printSizes: ['8×10', '11×14', '16×20'],
+    availableAsCard: true,
+    cardPrice: 5,
+    cardSizes: ['8×10', '11×14', '16×20']
   },
   {
     id: 13,
@@ -144,7 +225,13 @@ export const artCollection: ArtPiece[] = [
     imageUrl: "/assets/images/Maricopa Wild Horses.jpg",
     categories: ["Animals"],
     sold: false,
-    price: 250
+    artPrice: 250,
+    availableAsPrint: true,
+    printPrice: 30,
+    printSizes: ['8×10', '11×14', '16×20'],
+    availableAsCard: true,
+    cardPrice: 5,
+    cardSizes: ['8×10', '11×14', '16×20']
   },
   {
     id: 14,
@@ -155,7 +242,13 @@ export const artCollection: ArtPiece[] = [
     imageUrl: "/assets/images/Meandering Gila River.jpg",
     categories: ["Landscape"],
     sold: false,
-    price: 250
+    artPrice: 250,
+    availableAsPrint: true,
+    printPrice: 30,
+    printSizes: ['8×10', '11×14', '16×20'],
+    availableAsCard: true,
+    cardPrice: 5,
+    cardSizes: ['8×10', '11×14', '16×20']
   },
   {
     id: 15,
@@ -165,7 +258,13 @@ export const artCollection: ArtPiece[] = [
     imageUrl: "/assets/images/Mo.jpg",
     categories: ["Commision", "Animals"],
     sold: true,
-    price: 350
+    artPrice: 350,
+    availableAsPrint: true,
+    printPrice: 30,
+    printSizes: ['8×10', '11×14', '16×20'],
+    availableAsCard: true,
+    cardPrice: 5,
+    cardSizes: ['8×10', '11×14', '16×20']
   },
   {
     id: 16,
@@ -175,7 +274,13 @@ export const artCollection: ArtPiece[] = [
     imageUrl: "/assets/images/Natalie and Kos.jpg",
     categories: ["Figurative", "Animals"],
     sold: true,
-    price: 325
+    artPrice: 325,
+    availableAsPrint: true,
+    printPrice: 30,
+    printSizes: ['8×10', '11×14', '16×20'],
+    availableAsCard: true,
+    cardPrice: 5,
+    cardSizes: ['8×10', '11×14', '16×20']
   },
   {
     id: 17,
@@ -185,7 +290,13 @@ export const artCollection: ArtPiece[] = [
     imageUrl: "/assets/images/Praise for a Job Well Done.jpg",
     categories: ["Western", "Animals", "Figurative"],
     sold: true,
-    price: 750
+    artPrice: 750,
+    availableAsPrint: true,
+    printPrice: 30,
+    printSizes: ['8×10', '11×14', '16×20'],
+    availableAsCard: true,
+    cardPrice: 5,
+    cardSizes: ['8×10', '11×14', '16×20']
   },
   {
     id: 18,
@@ -195,7 +306,13 @@ export const artCollection: ArtPiece[] = [
     imageUrl: "/assets/images/Swoop.jpg",
     categories: ["Animals"],
     sold: true,
-    price: 250
+    artPrice: 250,
+    availableAsPrint: true,
+    printPrice: 30,
+    printSizes: ['8×10', '11×14', '16×20'],
+    availableAsCard: true,
+    cardPrice: 5,
+    cardSizes: ['8×10', '11×14', '16×20']
   },
   {
     id: 19,
@@ -206,7 +323,13 @@ export const artCollection: ArtPiece[] = [
     imageUrl: "/assets/images/Time Well Spent.jpg",
     categories: ["Landscape", "Figurative", "Western"],
     sold: false,
-    price: 700
+    artPrice: 700,
+    availableAsPrint: true,
+    printPrice: 30,
+    printSizes: ['8×10', '11×14', '16×20'],
+    availableAsCard: true,
+    cardPrice: 5,
+    cardSizes: ['8×10', '11×14', '16×20']
   },
   {
     id: 20,
@@ -216,7 +339,13 @@ export const artCollection: ArtPiece[] = [
     imageUrl: "/assets/images/Tiny Tyrant.jpg",
     categories: ["Animals"],
     sold: true,
-    price: 325
+    artPrice: 325,
+    availableAsPrint: true,
+    printPrice: 30,
+    printSizes: ['8×10', '11×14', '16×20'],
+    availableAsCard: true,
+    cardPrice: 5,
+    cardSizes: ['8×10', '11×14', '16×20']
   },
   {
     id: 21,
@@ -226,7 +355,13 @@ export const artCollection: ArtPiece[] = [
     imageUrl: "/assets/images/Toby's Contentment.jpg",
     categories: ["Figurative", "Animals"],
     sold: true,
-    price: 375
+    artPrice: 375,
+    availableAsPrint: true,
+    printPrice: 30,
+    printSizes: ['8×10', '11×14', '16×20'],
+    availableAsCard: true,
+    cardPrice: 5,
+    cardSizes: ['8×10', '11×14', '16×20']
   },
   {
     id: 22,
@@ -237,7 +372,13 @@ export const artCollection: ArtPiece[] = [
     imageUrl: "/assets/images/Under a Watchful Eye.jpg",
     categories: ["Landscape"],
     sold: false,
-    price: 250
+    artPrice: 250,
+    availableAsPrint: true,
+    printPrice: 30,
+    printSizes: ['8×10', '11×14', '16×20'],
+    availableAsCard: true,
+    cardPrice: 5,
+    cardSizes: ['8×10', '11×14', '16×20']
   },
   {
     id: 23,
@@ -247,7 +388,13 @@ export const artCollection: ArtPiece[] = [
     imageUrl: "/assets/images/Water in the Gila.jpg",
     categories: ["Landscape"],
     sold: false,
-    price: 500
+    artPrice: 500,
+    availableAsPrint: true,
+    printPrice: 30,
+    printSizes: ['8×10', '11×14', '16×20'],
+    availableAsCard: true,
+    cardPrice: 5,
+    cardSizes: ['8×10', '11×14', '16×20']
   },
   {
     id: 24,
@@ -257,7 +404,13 @@ export const artCollection: ArtPiece[] = [
     imageUrl: "/assets/images/It's Not Polite to Steer.jpg",
     categories: ["Animals", "Western"],
     sold: false,
-    price: 375
+    artPrice: 375,
+    availableAsPrint: true,
+    printPrice: 30,
+    printSizes: ['8×10', '11×14', '16×20'],
+    availableAsCard: true,
+    cardPrice: 5,
+    cardSizes: ['8×10', '11×14', '16×20']
   }
 ];
 
