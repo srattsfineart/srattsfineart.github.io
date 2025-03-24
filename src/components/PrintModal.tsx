@@ -224,7 +224,7 @@ const PrintModal = ({
                           <p><span className="font-medium">Type:</span> <strong>{isPrintView ? 'Fine Art Print' : 'Greeting Card'}</strong></p>
                           <p><span className="font-medium">Medium:</span> {art.medium}</p>
                           {isPrintView ? (
-                            <p className="mb-1">Material: Premium archival paper</p>
+                            <p className="mb-1">Material: Giclee Print on stretched bars</p>
                           ) : (
                             <p className="mb-1">Includes: Matching envelope</p>
                           )}

@@ -4,7 +4,7 @@ import { artCollection } from '../data/artCollection';
 
 const Home = () => {
   // Get 3 featured artworks
-  const featuredArt = artCollection.slice(0, 3);
+  const featuredArt = artCollection?.filter(art => art.id === 17 || art.id === 14 || art.id === 3);
 
   return (
     <div className="home-page">
@@ -34,7 +34,7 @@ const Home = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="hero-subtitle"
           >
-            Curating exceptional contemporary artworks that inspire and provoke thought
+            Artwork focusing on incredible realism and attention to detail.
           </motion.p>
           
           <motion.div
@@ -111,18 +111,18 @@ const Home = () => {
               transition={{ duration: 0.6 }}
               className="about-content"
             >
-              <h2 className="section-title">About S. Ratts Fine Art</h2>
+              <h2 className="section-title">About Shannon Ratts</h2>
               <p className="about-text">
-                Founded with a passion for contemporary art, S. Ratts Fine Art has established itself as a premier destination for art enthusiasts and collectors alike.
+                Taking the images of landscapes, animals, and the environment that surrounds her and creating vibrant, colorful, and expressive art with paint and brush.
               </p>
               <p className="about-text">
-                Our gallery showcases works from both established and emerging artists, with a focus on pieces that challenge perspectives and evoke emotion.
+                The western lifestyle and landscapes are my most meaningful inspiration. Oil painting allows me to express on canvas the life, energy, and beauty of those subjects with color, light, and texture.
               </p>
               <Link 
                 to="/about" 
                 className="about-link"
               >
-                Learn More About Us
+                Learn More About the Artist
               </Link>
             </motion.div>
             
@@ -134,8 +134,9 @@ const Home = () => {
               className="about-image"
             >
               <img 
-                src={artCollection[5].imageUrl} 
-                alt="Gallery Interior" 
+                src="/assets/images/Shannon Pic 1.jpg" 
+                alt="Shannon Ratts" 
+                className="about-image"
               />
             </motion.div>
           </div>

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaClock } from 'react-icons/fa';
+import { FaPhone, FaEnvelope, FaClock } from 'react-icons/fa';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -38,7 +38,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen pt-24 pb-16">
+    <div className="min-h-screen pt-24 pb-8">
       <div className="container mx-auto px-4">
         <motion.h1 
           initial={{ opacity: 0, y: 20 }}
@@ -46,7 +46,7 @@ const Contact = () => {
           transition={{ duration: 0.5 }}
           className="text-3xl md:text-4xl font-serif text-center mb-12"
         >
-          Contact Us
+          Contact the Artist
         </motion.h1>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
@@ -58,37 +58,29 @@ const Contact = () => {
           >
             <h2 className="text-2xl font-serif mb-6">Get in Touch</h2>
             <p className="text-gray-700 mb-8">
-              We'd love to hear from you. Whether you're interested in a specific artwork, 
-              have questions about our exhibitions, or want to discuss a potential collaboration, 
+              I'd love to hear from you. Whether you're interested in a specific artwork, 
+              have questions about my events, want to discuss a potential commission, or have any other questions, 
               please don't hesitate to reach out.
             </p>
             
             <div className="space-y-6">
               <ContactInfo 
-                icon={<FaMapMarkerAlt />} 
-                title="Visit Us" 
-                details={["123 Gallery Street", "Art District", "New York, NY 10001"]} 
-              />
-              
-              <ContactInfo 
                 icon={<FaPhone />} 
-                title="Call Us" 
-                details={["(212) 555-1234"]} 
+                title="Call or Text" 
+                details={["(303) 912-2986"]} 
               />
               
               <ContactInfo 
                 icon={<FaEnvelope />} 
-                title="Email Us" 
-                details={["info@srattsfineart.com", "inquiries@srattsfineart.com"]} 
+                title="Email" 
+                details={["shannon.ratts@gmail.com"]} 
               />
               
               <ContactInfo 
                 icon={<FaClock />} 
-                title="Gallery Hours" 
+                title="Studio Hours" 
                 details={[
-                  "Tuesday - Friday: 10am - 6pm",
-                  "Saturday: 11am - 5pm",
-                  "Sunday - Monday: Closed"
+                  "Monday - Friday: 8am - 5pm",
                 ]} 
               />
             </div>
@@ -151,8 +143,8 @@ const Contact = () => {
                   >
                     <option value="">Please select a subject</option>
                     <option value="Artwork Inquiry">Artwork Inquiry</option>
-                    <option value="Exhibition Information">Exhibition Information</option>
-                    <option value="Artist Submission">Artist Submission</option>
+                    <option value="Event Information">Event Information</option>
+                    <option value="Commissions">Commissions</option>
                     <option value="General Inquiry">General Inquiry</option>
                   </select>
                 </div>
@@ -180,21 +172,6 @@ const Contact = () => {
             )}
           </motion.div>
         </div>
-        
-        {/* Map */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          className="mt-16 max-w-6xl mx-auto rounded-lg overflow-hidden shadow-lg"
-        >
-          <div className="aspect-w-16 aspect-h-7 bg-gray-200">
-            {/* In a real application, you would embed a Google Map or similar here */}
-            <div className="w-full h-full flex items-center justify-center bg-gray-100">
-              <p className="text-gray-500">Map placeholder - In a real application, an interactive map would be displayed here</p>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </div>
   );

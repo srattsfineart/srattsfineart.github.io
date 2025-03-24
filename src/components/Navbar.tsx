@@ -36,14 +36,19 @@ const Navbar = () => {
         width: '100%',
         zIndex: 50,
         transition: 'all 0.3s ease',
-        backgroundColor: scrolled ? 'rgba(255, 255, 255, 0.9)' : 'rgba(255, 255, 255, 0.5)',
-        backdropFilter: 'blur(4px)',
-        padding: scrolled ? '0.5rem 0' : '1rem 0',
-        boxShadow: scrolled ? '0 2px 10px rgba(0, 0, 0, 0.1)' : 'none'
+        backgroundColor: scrolled ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0.85)',
+        backdropFilter: 'blur(8px)',
+        padding: scrolled ? '0.5rem 0' : '1.5rem 0',
+        boxShadow: scrolled ? '0 2px 10px rgba(0, 0, 0, 0.1)' : '0 1px 5px rgba(0, 0, 0, 0.05)'
       }}
     >
       <div className="container flex justify-between items-center">
-        <Link to="/" className="font-serif" style={{ fontSize: '1.5rem', letterSpacing: '0.05em' }}>
+        <Link to="/" className="font-serif" style={{ 
+          fontSize: '1.5rem', 
+          letterSpacing: '0.05em',
+          color: '#000',
+          fontWeight: 600
+        }}>
           S. Ratts Fine Art
         </Link>
 
@@ -105,7 +110,7 @@ const NavLink = ({ to, children }: { to: string; children: React.ReactNode }) =>
         position: 'relative',
         fontWeight: 500,
         transition: 'color 0.3s ease',
-        color: isActive ? '#000' : '#666',
+        color: isActive ? '#000' : '#333',
         marginLeft: '2rem'
       }}
     >

@@ -16,6 +16,7 @@ export interface ArtPiece {
   
   availableAsCard?: boolean;
   cardPrice?: number;
+  cardBundleOfFourPrice?: number;
   cardSizes?: string[];
 }
 
@@ -34,7 +35,8 @@ export const artCollection: ArtPiece[] = [
     printSizes: ['8×10', '11×14', '16×20'],
     availableAsCard: true,
     cardPrice: 5,
-    cardSizes: ['8×10', '11×14', '16×20']
+    cardBundleOfFourPrice: 22,
+    cardSizes: ['5x7']
   },
   {
     id: 2,
@@ -51,7 +53,8 @@ export const artCollection: ArtPiece[] = [
     printSizes: ['8×10', '11×14', '16×20'],
     availableAsCard: true,
     cardPrice: 5,
-    cardSizes: ['8×10', '11×14', '16×20']
+    cardBundleOfFourPrice: 22,
+    cardSizes: ['5x7']
   },
   {
     id: 3,
@@ -67,7 +70,8 @@ export const artCollection: ArtPiece[] = [
     printSizes: ['8×10', '11×14', '16×20'],
     availableAsCard: true,
     cardPrice: 5,
-    cardSizes: ['8×10', '11×14', '16×20']
+    cardBundleOfFourPrice: 22,
+    cardSizes: ['5x7']
   },
   {
     id: 4,
@@ -83,7 +87,8 @@ export const artCollection: ArtPiece[] = [
     printSizes: ['8×10', '11×14', '16×20'],
     availableAsCard: true,
     cardPrice: 5,
-    cardSizes: ['8×10', '11×14', '16×20']
+    cardBundleOfFourPrice: 22,
+    cardSizes: ['5x7']
   },
   {
     id: 5,
@@ -99,7 +104,8 @@ export const artCollection: ArtPiece[] = [
     printSizes: ['8×10', '11×14', '16×20'],
     availableAsCard: true,
     cardPrice: 5,
-    cardSizes: ['8×10', '11×14', '16×20']
+    cardBundleOfFourPrice: 22,
+    cardSizes: ['5x7']
   },
   {
     id: 6,
@@ -115,7 +121,8 @@ export const artCollection: ArtPiece[] = [
     printSizes: ['8×10', '11×14', '16×20'],
     availableAsCard: true,
     cardPrice: 5,
-    cardSizes: ['8×10', '11×14', '16×20']
+    cardBundleOfFourPrice: 22,
+    cardSizes: ['5x7']
   },
   {
     id: 7,
@@ -131,7 +138,8 @@ export const artCollection: ArtPiece[] = [
     printSizes: ['8×10', '11×14', '16×20'],
     availableAsCard: true,
     cardPrice: 5,
-    cardSizes: ['8×10', '11×14', '16×20']
+    cardBundleOfFourPrice: 22,
+    cardSizes: ['5x7']
   },
   {
     id: 8,
@@ -148,7 +156,8 @@ export const artCollection: ArtPiece[] = [
     printSizes: ['8×10', '11×14', '16×20'],
     availableAsCard: true,
     cardPrice: 5,
-    cardSizes: ['8×10', '11×14', '16×20']
+    cardBundleOfFourPrice: 22,
+    cardSizes: ['5x7']
   },
   {
     id: 9,
@@ -165,7 +174,8 @@ export const artCollection: ArtPiece[] = [
     printSizes: ['8×10', '11×14', '16×20'],
     availableAsCard: true,
     cardPrice: 5,
-    cardSizes: ['8×10', '11×14', '16×20']
+    cardBundleOfFourPrice: 22,
+    cardSizes: ['5x7']
   },
   {
     id: 10,
@@ -181,7 +191,8 @@ export const artCollection: ArtPiece[] = [
     printSizes: ['8×10', '11×14', '16×20'],
     availableAsCard: true,
     cardPrice: 5,
-    cardSizes: ['8×10', '11×14', '16×20']
+    cardBundleOfFourPrice: 22,
+    cardSizes: ['5x7']
   },
   {
     id: 11,
@@ -198,7 +209,8 @@ export const artCollection: ArtPiece[] = [
     printSizes: ['8×10', '11×14', '16×20'],
     availableAsCard: true,
     cardPrice: 5,
-    cardSizes: ['8×10', '11×14', '16×20']
+    cardBundleOfFourPrice: 22,
+    cardSizes: ['5x7']
   },
   {
     id: 12,
@@ -214,7 +226,8 @@ export const artCollection: ArtPiece[] = [
     printSizes: ['8×10', '11×14', '16×20'],
     availableAsCard: true,
     cardPrice: 5,
-    cardSizes: ['8×10', '11×14', '16×20']
+    cardBundleOfFourPrice: 22,
+    cardSizes: ['5x7']
   },
   {
     id: 13,
@@ -231,7 +244,8 @@ export const artCollection: ArtPiece[] = [
     printSizes: ['8×10', '11×14', '16×20'],
     availableAsCard: true,
     cardPrice: 5,
-    cardSizes: ['8×10', '11×14', '16×20']
+    cardBundleOfFourPrice: 22,
+    cardSizes: ['5x7']
   },
   {
     id: 14,
@@ -248,7 +262,8 @@ export const artCollection: ArtPiece[] = [
     printSizes: ['8×10', '11×14', '16×20'],
     availableAsCard: true,
     cardPrice: 5,
-    cardSizes: ['8×10', '11×14', '16×20']
+    cardBundleOfFourPrice: 22,
+    cardSizes: ['5x7']
   },
   {
     id: 15,
@@ -264,7 +279,8 @@ export const artCollection: ArtPiece[] = [
     printSizes: ['8×10', '11×14', '16×20'],
     availableAsCard: true,
     cardPrice: 5,
-    cardSizes: ['8×10', '11×14', '16×20']
+    cardBundleOfFourPrice: 22,
+    cardSizes: ['5x7']
   },
   {
     id: 16,
@@ -280,7 +296,8 @@ export const artCollection: ArtPiece[] = [
     printSizes: ['8×10', '11×14', '16×20'],
     availableAsCard: true,
     cardPrice: 5,
-    cardSizes: ['8×10', '11×14', '16×20']
+    cardBundleOfFourPrice: 22,
+    cardSizes: ['5x7']
   },
   {
     id: 17,
@@ -296,7 +313,8 @@ export const artCollection: ArtPiece[] = [
     printSizes: ['8×10', '11×14', '16×20'],
     availableAsCard: true,
     cardPrice: 5,
-    cardSizes: ['8×10', '11×14', '16×20']
+    cardBundleOfFourPrice: 22,
+    cardSizes: ['5x7']
   },
   {
     id: 18,
@@ -312,7 +330,8 @@ export const artCollection: ArtPiece[] = [
     printSizes: ['8×10', '11×14', '16×20'],
     availableAsCard: true,
     cardPrice: 5,
-    cardSizes: ['8×10', '11×14', '16×20']
+    cardBundleOfFourPrice: 22,
+    cardSizes: ['5x7']
   },
   {
     id: 19,
@@ -329,7 +348,8 @@ export const artCollection: ArtPiece[] = [
     printSizes: ['8×10', '11×14', '16×20'],
     availableAsCard: true,
     cardPrice: 5,
-    cardSizes: ['8×10', '11×14', '16×20']
+    cardBundleOfFourPrice: 22,
+    cardSizes: ['5x7']
   },
   {
     id: 20,
@@ -345,7 +365,8 @@ export const artCollection: ArtPiece[] = [
     printSizes: ['8×10', '11×14', '16×20'],
     availableAsCard: true,
     cardPrice: 5,
-    cardSizes: ['8×10', '11×14', '16×20']
+    cardBundleOfFourPrice: 22,
+    cardSizes: ['5x7']
   },
   {
     id: 21,
@@ -361,7 +382,8 @@ export const artCollection: ArtPiece[] = [
     printSizes: ['8×10', '11×14', '16×20'],
     availableAsCard: true,
     cardPrice: 5,
-    cardSizes: ['8×10', '11×14', '16×20']
+    cardBundleOfFourPrice: 22,
+    cardSizes: ['5x7']
   },
   {
     id: 22,
@@ -378,7 +400,8 @@ export const artCollection: ArtPiece[] = [
     printSizes: ['8×10', '11×14', '16×20'],
     availableAsCard: true,
     cardPrice: 5,
-    cardSizes: ['8×10', '11×14', '16×20']
+    cardBundleOfFourPrice: 22,
+    cardSizes: ['5x7']
   },
   {
     id: 23,
@@ -394,7 +417,8 @@ export const artCollection: ArtPiece[] = [
     printSizes: ['8×10', '11×14', '16×20'],
     availableAsCard: true,
     cardPrice: 5,
-    cardSizes: ['8×10', '11×14', '16×20']
+    cardBundleOfFourPrice: 22,
+    cardSizes: ['5x7']
   },
   {
     id: 24,
@@ -410,7 +434,8 @@ export const artCollection: ArtPiece[] = [
     printSizes: ['8×10', '11×14', '16×20'],
     availableAsCard: true,
     cardPrice: 5,
-    cardSizes: ['8×10', '11×14', '16×20']
+    cardBundleOfFourPrice: 22,
+    cardSizes: ['5x7']
   }
 ];
 
