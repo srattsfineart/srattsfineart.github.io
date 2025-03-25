@@ -29,7 +29,7 @@ const Home = () => {
             <img 
               src="/assets/images/SRatts Signature White.png" 
               alt="S. Ratts Signature" 
-              style={{ marginBottom: '-10px' }}
+              style={{ marginBottom: '-1em', maxHeight: '250px' }}
             />
             S. Ratts Fine Art
           </div>

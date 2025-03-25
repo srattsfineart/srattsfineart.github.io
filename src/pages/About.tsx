@@ -30,7 +30,7 @@ const About = () => {
               Shannon was born in 1966, developing a love for art at the early age of 14 when her grandmother signed her up for a week long oil painting workshop in the small mountain town of South Fork, CO.  
             </p>
             <p className="text-gray-700 mb-4">
-            Discovering she had a natural talent, she pursued art through high school. High school, college, horse showing, career, and family took her away from art until 2017. At that time, she took up acrylic painting. By 2019, she had moved from Colorado to Arizona, and her desire to paint with oils sparked again. She began serious instruction with professional artist Mark White in early 2022, and continued until his passing in 2024.
+              Discovering she had a natural talent, she pursued art through high school. College, horse showing, career, and family took her away from art until 2017. At that time, she took up acrylic painting. By 2019, she had moved from Colorado to Arizona, and her desire to paint with oils sparked again. She began serious instruction with professional artist Mark White in early 2022, and continued until his passing in 2024.
             </p>
             <p className="text-gray-700 mb-4">
               Shannon's artwork focuses on the realism of her subjects. Shannon has a deep love for animals (horses especially) and everything western. Her many years as a Veterinary Technician and equestrian has enabled her to capture the anatomical accuracy of the animals she paints more realistically.

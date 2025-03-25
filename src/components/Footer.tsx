@@ -1,14 +1,46 @@
 import { FaFacebook } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Add responsive behavior
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    // Set initial value
+    handleResize();
+    
+    // Add event listener
+    window.addEventListener('resize', handleResize);
+    
+    // Clean up
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
   
   return (
     <footer style={{ backgroundColor: '#f5f5f5', padding: '3rem 0' }}>
       <div className="container">
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-          <div className="grid grid-cols-1 grid-cols-3" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '2rem', flex: '1' }}>
+        <div style={{ 
+          display: 'flex', 
+          flexDirection: isMobile ? 'column' : 'row',
+          justifyContent: 'space-between', 
+          alignItems: isMobile ? 'center' : 'flex-start',
+          gap: isMobile ? '2rem' : '0'
+        }}>
+          <div className="grid grid-cols-1 grid-cols-3" style={{ 
+            display: 'grid', 
+            gridTemplateColumns: '1fr', 
+            gap: '2rem', 
+            flex: '1',
+            width: isMobile ? '100%' : 'auto'
+          }}>
             {/* Logo and Description */}
             <div>
               <h3 className="font-serif" style={{ fontSize: '1.25rem', marginBottom: '1rem' }}>S. Ratts Fine Art</h3>
@@ -31,7 +63,7 @@ const Footer = () => {
             {/* Quick Links */}
             <div>
               <h3 style={{ fontSize: '1.125rem', fontWeight: 500, marginBottom: '1rem' }}>Quick Links</h3>
-              <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', paddingLeft: '1.5em' }}>
                 <li style={{ paddingLeft: '1rem' }}>
                   <Link to="/" style={{ color: '#666', transition: 'color 0.3s ease' }}>Home</Link>
                 </li>
@@ -65,12 +97,16 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Signature Image - Smaller and on the right */}
-          <div style={{ marginLeft: '2rem', alignSelf: 'center' }}>
+          {/* Signature Image - Smaller and on the right for desktop, below content for mobile */}
+          <div style={{ 
+            marginLeft: isMobile ? '0' : '2rem', 
+            alignSelf: isMobile ? 'center' : 'center',
+            marginTop: isMobile ? '1rem' : '0'
+          }}>
             <img 
               src="/assets/images/SRatts Signature Black.png" 
               alt="S. Ratts Signature" 
-              style={{ maxWidth: '400px', height: 'auto' }}
+              style={{ maxHeight: '200px' }}
             />
           </div>
         </div>
