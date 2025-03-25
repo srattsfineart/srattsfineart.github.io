@@ -22,7 +22,7 @@ const About = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="order-2 md:order-1"
           >
-            <h2 className="text-2xl font-serif mb-4">My Story</h2>
+            <h2 className="text-2xl font-serif mb-4">Her Story</h2>
             <p className="text-gray-700 mb-4">
               S. Ratts Fine Art was established in 2023 by Shannon Ratts.
             </p>
@@ -60,6 +60,49 @@ const About = () => {
           </motion.div>
         </div>
         
+        {/* Content Grid - Statement and Image */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto" style={{ marginTop: '2rem' }}>
+          {/* Image Column */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="order-1 md:order-2 flex items-center justify-center"
+          >
+            <div className="rounded-lg overflow-hidden shadow-lg max-w-md">
+              <img 
+                src="/assets/images/Water in the Gila.jpg" 
+                alt="Water in the Gila" 
+                className="w-full h-auto object-cover"
+              />
+            </div>
+          </motion.div>
+          
+          {/* Statement Column */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="order-2 md:order-1"
+          >
+            <h2 className="text-2xl font-serif mb-4">Artist Statement</h2>
+            <p className="text-gray-700 mb-4">
+              Oil painting is one of my most rewarding challenges to date. This non-verbal, solitary thing that I spend countless hours doing allows me to take the beauty of places I see, the passion for the Western lifestyle that I love, and the animals that surround me and paint it. 
+            </p>
+            <p className="text-gray-700 mb-4">
+              I love to stay true to detailed realism and make my paintings immersive. I have accomplished my goal if my landscapes make you want to be there, if my animals look as though they will walk off the canvas, if I have captured an animal's expression, and if my paintings tell a story.
+            </p>
+            <p className="text-gray-700 mb-4">
+              At 14 years of age, at my Grandmother's cabin in Colorado, I fell in love with oil painting. To this day a scene, animal, or photo will speak to me as if beckoning me to capture it — and then the inspiration takes hold. With my brushstrokes, color, and imagination I can unfold the story on canvas for all to see.
+            </p>
+            <img 
+              src="/assets/images/SRatts Signature Black.png" 
+              alt="S. Ratts Signature" 
+              className="w-full h-auto object-cover"
+              style={{ marginTop: '-1em', marginLeft: '-1em', maxWidth: '100px', width: '5em' }}
+            />
+          </motion.div>
+        </div>
       </div>
     </div>
   );
