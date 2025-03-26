@@ -93,7 +93,7 @@ const About = () => {
               I love to stay true to detailed realism and make my paintings immersive. I have accomplished my goal if my landscapes make you want to be there, if my animals look as though they will walk off the canvas, if I have captured an animal's expression, and if my paintings tell a story.
             </p>
             <p className="text-gray-700 mb-4">
-              At 14 years of age, at my Grandmother's cabin in Colorado, I fell in love with oil painting. To this day a scene, animal, or photo will speak to me as if beckoning me to capture it — and then the inspiration takes hold. With my brushstrokes, color, and imagination I can unfold the story on canvas for all to see.
+              At 14 years of age, at my grandmother's cabin in Colorado, I fell in love with oil painting. To this day a scene, animal, or photo will speak to me as if beckoning me to capture it — and then the inspiration takes hold. With my brushstrokes, color, and imagination I can unfold the story on canvas for all to see.
             </p>
             <img 
               src="/assets/images/SRatts Signature Black.png" 

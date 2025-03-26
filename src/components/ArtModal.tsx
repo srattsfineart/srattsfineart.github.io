@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, useCallback } from 'react';
+import { useEffect, useState, useRef, useCallback, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaTimes, FaChevronLeft, FaChevronRight, FaChevronUp, FaChevronDown } from 'react-icons/fa';
 import { ArtPiece } from '../data/artCollection';
@@ -17,31 +17,36 @@ const ArtModal = ({ art, artCollection, isOpen, onClose, onNavigate }: ArtModalP
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isInfoCollapsed, setIsInfoCollapsed] = useState<boolean>(false);
 
+  // Filter art collection to only include items where showInGallery is true
+  const visibleArtCollection = useMemo(() => {
+    return artCollection.filter(item => item.showInGallery);
+  }, [artCollection]);
+
   // Find current art index when art changes
   useEffect(() => {
     if (art) {
-      const index = artCollection.findIndex(item => item.id === art.id);
+      const index = visibleArtCollection.findIndex(item => item.id === art.id);
       if (index !== -1) {
         setCurrentIndex(index);
       }
     }
-  }, [art, artCollection]);
+  }, [art, visibleArtCollection]);
 
   const handleNext = useCallback(() => {
-    if (!artCollection.length) return;
+    if (!visibleArtCollection.length) return;
     
-    const nextIndex = (currentIndex + 1) % artCollection.length;
-    const nextArt = artCollection[nextIndex];
+    const nextIndex = (currentIndex + 1) % visibleArtCollection.length;
+    const nextArt = visibleArtCollection[nextIndex];
     onNavigate(nextArt);
-  }, [artCollection, currentIndex, onNavigate]);
+  }, [visibleArtCollection, currentIndex, onNavigate]);
 
   const handlePrev = useCallback(() => {
-    if (!artCollection.length) return;
+    if (!visibleArtCollection.length) return;
     
-    const prevIndex = (currentIndex - 1 + artCollection.length) % artCollection.length;
-    const prevArt = artCollection[prevIndex];
+    const prevIndex = (currentIndex - 1 + visibleArtCollection.length) % visibleArtCollection.length;
+    const prevArt = visibleArtCollection[prevIndex];
     onNavigate(prevArt);
-  }, [artCollection, currentIndex, onNavigate]);
+  }, [visibleArtCollection, currentIndex, onNavigate]);
 
   // Prevent scrolling when modal is open
   useEffect(() => {
@@ -141,7 +146,7 @@ const ArtModal = ({ art, artCollection, isOpen, onClose, onNavigate }: ArtModalP
                 
                 {/* Carousel indicator */}
                 <div className="carousel-indicator">
-                  <span>{currentIndex + 1}</span> / <span>{artCollection.length}</span>
+                  <span>{currentIndex + 1}</span> / <span>{visibleArtCollection.length}</span>
                 </div>
               </div>
               

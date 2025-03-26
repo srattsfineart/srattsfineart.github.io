@@ -117,11 +117,11 @@ const PrintsAndCards = () => {
               </p>
               <div className="flex justify-between items-center">
                 <div className="space-y-1">
-                  {art.availableAsPrint && (
-                    <div className="text-sm font-medium">Print: ${art.printPrice}+</div>
+                  {art.availableAsPrint && art.printPrices && art.printPrices.length > 0 && (
+                    <div className="text-sm font-medium">Print: ${art.printPrices[0]}+</div>
                   )}
-                  {art.availableAsCard && (
-                    <div className="text-sm font-medium">Card: ${art.cardPrice}</div>
+                  {art.availableAsCard && art.cardPrices && art.cardPrices.length > 0 && (
+                    <div className="text-sm font-medium">Card: ${art.cardPrices[0]}</div>
                   )}
                 </div>
                 <button 

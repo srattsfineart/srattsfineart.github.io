@@ -12,7 +12,7 @@ const Home = () => {
       <section className="hero-section">
         <div className="hero-background">
           <img 
-            src={artCollection[4].imageUrl} 
+            src={artCollection?.find(art => art.id === 23)?.imageUrl} 
             alt="Hero Background" 
           />
           <div className="hero-overlay"></div>
@@ -26,11 +26,11 @@ const Home = () => {
             className="hero-title"
           >
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: 0 }}>
-            <img 
+            {/* <img 
               src="/assets/images/SRatts Signature White.png" 
               alt="S. Ratts Signature" 
               style={{ marginBottom: '-1em', maxHeight: '250px' }}
-            />
+            /> */}
             S. Ratts Fine Art
           </div>
           </motion.h2>

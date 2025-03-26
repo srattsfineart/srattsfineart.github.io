@@ -16,7 +16,8 @@ const Gallery = () => {
 
   // Filter art by category and availability
   useEffect(() => {
-    let filtered = [...artCollection];
+    // First filter out items where showInGallery is false
+    let filtered = [...artCollection].filter(art => art.showInGallery);
     
     // Filter by category
     if (selectedCategory !== 'All') {

@@ -1,14 +1,23 @@
 import { motion } from 'framer-motion';
 import { FaPalette, FaClipboardList, FaMoneyBillWave } from 'react-icons/fa';
+import { artCollection } from '../data/artCollection';
 
 const Commissions = () => {
   return (
     <div className="commissions-page">
       {/* Hero Section */}
       <section className="hero-section">
-        <div className="container">
+        <div className="hero-background">
+          <img 
+            src={artCollection?.find(art => art.id === 6)?.imageUrl} 
+            alt="Hero Background" 
+          />
+          <div className="hero-overlay"></div>
+        </div>
+        
+        <div className="hero-content">
           <motion.h1 
-            className="hero-title text-center"
+            className="hero-title text-white"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -16,10 +25,10 @@ const Commissions = () => {
             Custom Art Commissions
           </motion.h1>
           <motion.p 
-            className="hero-subtitle text-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
+            className="hero-subtitle"
           >
             Bring your vision to life with a personalized artwork
           </motion.p>
@@ -28,7 +37,7 @@ const Commissions = () => {
 
       {/* What is a Commission Section */}
       <section className="section bg-light">
-        <div className="container">
+        <div className="container" style={{paddingTop: '2rem'}}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -42,14 +51,12 @@ const Commissions = () => {
               </div>
               <div className="commission-info-content">
                 <p>
-                  A commission is a custom artwork created specifically for you based on your preferences, 
-                  ideas, and vision. When you commission a piece, you're initiating a collaborative 
+                  A commission is a custom artwork created specifically for you, typically based on photographs you would provide for reference. When you commission a piece, you're initiating a collaborative 
                   process where your input helps shape the final artwork.
                 </p>
                 <p className="mt-4">
-                  Each commissioned piece is unique and tailored to your specifications, whether it's a 
-                  portrait, landscape, abstract composition, or any other subject matter that resonates 
-                  with you. The result is a one-of-a-kind artwork that holds special meaning and 
+                  Each commissioned piece is unique and tailored to your reference photos/specifications. Whether it's a 
+                  landscape or animal, the result is a one-of-a-kind artwork that holds special meaning and 
                   significance.
                 </p>
               </div>
@@ -59,7 +66,7 @@ const Commissions = () => {
       </section>
 
       {/* Commission Process Section */}
-      <section className="section">
+      {/* <section className="section">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -116,11 +123,11 @@ const Commissions = () => {
             </div>
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       {/* Commission Types Section */}
       <section className="section bg-light">
-        <div className="container">
+        <div className="container" style={{paddingTop: '2rem', paddingBottom: '2rem'}}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -134,34 +141,19 @@ const Commissions = () => {
               </div>
               <div className="commission-info-content">
                 <p>
-                  I offer a variety of commission types to suit different preferences and needs:
+                  I offer commissions for the following types of artwork, taking roughly 6-8 weeks to complete (depending on the complexity and size of the commission):
                 </p>
                 <ul className="commission-types-list">
                   <li>
-                    <strong>Landscape Paintings</strong> - Capture your favorite location, vacation spot, 
-                    or natural scene in oil or acrylic.
+                    <strong>Landscape Oil Paintings</strong> - Capture your favorite location, vacation spot, 
+                    or natural scene on standard canvas, canvas panel, or gallery wrapped canvas.
                   </li>
                   <li>
-                    <strong>Portrait Art</strong> - Commemorate a loved one, pet, or family with a 
-                    thoughtfully crafted portrait.
-                  </li>
-                  <li>
-                    <strong>Abstract Compositions</strong> - Express emotions, concepts, or aesthetics 
-                    through non-representational art.
-                  </li>
-                  <li>
-                    <strong>Still Life</strong> - Immortalize meaningful objects or arrangements with 
-                    detailed still life paintings.
-                  </li>
-                  <li>
-                    <strong>Mixed Media Works</strong> - Combine various techniques and materials for a 
-                    unique artistic expression.
+                    <strong>Animal Oil Paintings</strong> - Depict a specific animal or a group of animals on standard canvas, canvas panel, or gallery wrapped canvas.
                   </li>
                 </ul>
                 <p className="mt-4">
-                  Each commission type can be customized to your specific preferences regarding size, 
-                  color palette, style, and more. I'm also open to discussing other subjects or approaches 
-                  not listed here.
+                  I'm also open to discussing other subjects not listed here.
                 </p>
               </div>
             </div>
@@ -186,37 +178,17 @@ const Commissions = () => {
               <div className="commission-info-content">
                 <p>
                   Commission pricing varies based on several factors including size, complexity, medium, 
-                  and timeline. Below are general pricing guidelines to help you understand the investment:
+                  and timeline. In general, custom commissions are approximately $3.00 per square inch. 
                 </p>
-                
-                <div className="pricing-table">
-                  <div className="pricing-category">
-                    <h3>Small Works (up to 16" x 20")</h3>
-                    <p className="pricing-range">$500 - $1,200</p>
-                    <p className="pricing-description">
-                      Ideal for intimate spaces or as special gifts. These smaller works still receive the 
-                      same attention to detail and quality as larger pieces.
-                    </p>
-                  </div>
-                  
-                  <div className="pricing-category">
-                    <h3>Medium Works (20" x 24" to 30" x 40")</h3>
-                    <p className="pricing-range">$1,200 - $3,000</p>
-                    <p className="pricing-description">
-                      Perfect for statement pieces in homes or offices. These works balance presence with 
-                      practicality for most living spaces.
-                    </p>
-                  </div>
-                  
-                  <div className="pricing-category">
-                    <h3>Large Works (36" x 48" and larger)</h3>
-                    <p className="pricing-range">$3,000 - $7,500+</p>
-                    <p className="pricing-description">
-                      Commanding pieces for larger spaces or collections. These substantial works make a 
-                      significant visual impact and often become focal points.
-                    </p>
-                  </div>
-                </div>
+                <p>
+                - Framing is not included, but can be discussed and provided for an additional cost. 
+                </p>
+                <p>
+                  - Shipping is calculated separately.
+                </p>
+                <p>
+                  Accepted forms of payment are: Check/Cash, Venmo, Zelle
+                </p>
                 
                 <p className="pricing-note mt-6">
                   <strong>Note:</strong> These are general guidelines. The final price will be determined 
@@ -230,8 +202,8 @@ const Commissions = () => {
       </section>
 
       {/* Contact CTA Section */}
-      <section className="section bg-primary text-white">
-        <div className="container text-center">
+      <section className="section">
+        <div className="container text-center" style={{paddingTop: '2rem', paddingBottom: '2rem'}}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaTimes, FaChevronLeft, FaChevronRight, FaChevronUp, FaChevronDown } from 'react-icons/fa';
 import { ArtPiece } from '../data/artCollection';
@@ -29,6 +29,21 @@ const PrintModal = ({
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isInfoCollapsed, setIsInfoCollapsed] = useState<boolean>(false);
   const [isPrintView, setIsPrintView] = useState<boolean>(initialIsPrintView);
+
+  // Get the price for the selected size
+  const getSelectedPrice = (): number | undefined => {
+    if (!art) return undefined;
+    
+    const currentSizes = isPrintView ? art.printSizes : art.cardSizes;
+    const currentPrices = isPrintView ? art.printPrices : art.cardPrices;
+    
+    if (!currentSizes || !currentPrices || !selectedSize) return undefined;
+    
+    const sizeIndex = currentSizes.findIndex(size => size === selectedSize);
+    if (sizeIndex === -1 || !currentPrices[sizeIndex]) return currentPrices[0]; // Default to first price if not found
+    
+    return currentPrices[sizeIndex];
+  };
 
   // Find current item index when item changes
   useEffect(() => {
@@ -79,21 +94,53 @@ const PrintModal = ({
     };
   }, [onClose, currentIndex, isInfoCollapsed]);
 
-  const handleNext = () => {
-    if (!artCollection.length) return;
+  const handleNext = useCallback(() => {
+    if (!art || !artCollection.length) return;
     
-    const nextIndex = (currentIndex + 1) % artCollection.length;
-    const nextItem = artCollection[nextIndex];
-    onNavigate(nextItem);
-  };
+    // Filter collection to only include items that support the current view type
+    const filteredCollection = artCollection.filter(item => 
+      isPrintView ? item.availableAsPrint : item.availableAsCard
+    );
+    
+    if (filteredCollection.length === 0) return;
+    
+    // Find the current item in the filtered collection
+    const currentItemIndex = filteredCollection.findIndex(item => item.id === art.id);
+    
+    // If the current item is not in the filtered collection (shouldn't happen, but just in case)
+    // or if there's only one item that supports the current view, don't navigate
+    if (currentItemIndex === -1 || filteredCollection.length === 1) return;
+    
+    // Get the next item in the filtered collection
+    const nextIndex = (currentItemIndex + 1) % filteredCollection.length;
+    const nextArt = filteredCollection[nextIndex];
+    
+    onNavigate(nextArt);
+  }, [art, artCollection, isPrintView, onNavigate]);
 
-  const handlePrev = () => {
-    if (!artCollection.length) return;
+  const handlePrev = useCallback(() => {
+    if (!art || !artCollection.length) return;
     
-    const prevIndex = (currentIndex - 1 + artCollection.length) % artCollection.length;
-    const prevItem = artCollection[prevIndex];
-    onNavigate(prevItem);
-  };
+    // Filter collection to only include items that support the current view type
+    const filteredCollection = artCollection.filter(item => 
+      isPrintView ? item.availableAsPrint : item.availableAsCard
+    );
+    
+    if (filteredCollection.length === 0) return;
+    
+    // Find the current item in the filtered collection
+    const currentItemIndex = filteredCollection.findIndex(item => item.id === art.id);
+    
+    // If the current item is not in the filtered collection (shouldn't happen, but just in case)
+    // or if there's only one item that supports the current view, don't navigate
+    if (currentItemIndex === -1 || filteredCollection.length === 1) return;
+    
+    // Get the previous item in the filtered collection
+    const prevIndex = (currentItemIndex - 1 + filteredCollection.length) % filteredCollection.length;
+    const prevArt = filteredCollection[prevIndex];
+    
+    onNavigate(prevArt);
+  }, [art, artCollection, isPrintView, onNavigate]);
 
   const toggleInfoCollapse = () => {
     setIsInfoCollapsed(prev => !prev);
@@ -124,7 +171,6 @@ const PrintModal = ({
   if (!art) return null;
 
   const sizes = isPrintView ? art.printSizes : art.cardSizes;
-  const price = isPrintView ? art.printPrice : art.cardPrice;
   const canToggleView = (isPrintView && art.availableAsCard) || (!isPrintView && art.availableAsPrint);
 
   return (
@@ -185,7 +231,9 @@ const PrintModal = ({
                 
                 {/* Carousel indicator */}
                 <div className="carousel-indicator">
-                  <span>{currentIndex + 1}</span> / <span>{artCollection.length}</span>
+                  <span>{currentIndex + 1}</span> / <span>{artCollection.filter(item => 
+                    isPrintView ? item.availableAsPrint : item.availableAsCard
+                  ).length}</span>
                 </div>
               </div>
               
@@ -231,14 +279,21 @@ const PrintModal = ({
                         <div className="modal-specs">
                           <p><span className="font-medium">Type:</span> <strong>{isPrintView ? 'Fine Art Print' : 'Greeting Card'}</strong></p>
                           {isPrintView ? (
-                            <p className="mb-1">Material: Giclee Print on stretched bars</p>
+                            <p className="mb-1">Material: Giclee Print stretched on standard bars (contact for other types of prints)</p>
                           ) : (
-                            <p className="mb-1">Includes: Matching envelope</p>
+                            <>
+                              <p className="mb-1">Includes: Matching envelope</p>
+                              <p className="mb-1">
+                                <span className="font-medium">Inside:</span> {art.cardInnerContent 
+                                  ? `"${art.cardInnerContent}"` 
+                                  : "Blank inside"}
+                              </p>
+                            </>
                           )}
                           
                           {sizes && sizes.length > 0 && (
                             <div className="mb-4 mt-4">
-                              <p className="font-medium mb-2">Size:</p>
+                              <p className="font-medium mb-2">Size: {isPrintView ? "(larger sizes available upon request)" : ""}</p>
                               <div className="flex flex-wrap gap-2">
                                 {sizes.map(size => (
                                   <button
@@ -257,10 +312,12 @@ const PrintModal = ({
                           )}
                           
                           <p className="mt-2"><span className="font-medium">Price:</span> {isPrintView ? (
-                            <span>${price} {price && sizes && sizes.length > 1 ? `- $${price + 20} depending on size` : ''}</span>
+                            <span>
+                              ${getSelectedPrice()}
+                            </span>
                           ) : (
                             <span>
-                              ${price} per card
+                              ${getSelectedPrice()} per card
                               {art.cardBundleOfFourPrice && (
                                 <span className="block text-sm mt-1">
                                   Bundle of 4: ${art.cardBundleOfFourPrice}
