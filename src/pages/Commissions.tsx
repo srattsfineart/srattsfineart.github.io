@@ -220,6 +220,71 @@ const Commissions = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Gallery of Commission Examples */}
+      <section className="section">
+        <div className="container text-center" style={{paddingTop: '2rem', paddingBottom: '4rem'}}>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <h3 className="section-subtitle mb-8">Examples of Previous Commissions</h3>
+            <div className="flex flex-wrap justify-center gap-6">
+
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="flex-shrink-0"
+              >
+                <div className="rounded-lg overflow-hidden shadow-lg max-w-xs">
+                  <img 
+                    src="/assets/images/Mo.jpg" 
+                    alt="Mo" 
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="flex-shrink-0"
+              >
+                <div className="rounded-lg overflow-hidden shadow-lg max-w-xs">
+                  <img 
+                    src="/assets/images/Jan's Poodle.jpg" 
+                    alt="Jan's Poodle" 
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="flex-shrink-0"
+              >
+                <div className="rounded-lg overflow-hidden shadow-lg max-w-xs">
+                  <img 
+                    src="/assets/images/Casper and Doug.jpg" 
+                    alt="Casper and Doug" 
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
     </div>
   );
 };
