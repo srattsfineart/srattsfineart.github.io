@@ -320,7 +320,7 @@ const PrintModal = ({
                               ${getSelectedPrice()} per card
                               {art.cardBundleOfFourPrice && (
                                 <span className="block text-sm mt-1">
-                                  Bundle of 4: ${art.cardBundleOfFourPrice}
+                                  Box Set (4 cards): ${art.cardBundleOfFourPrice}
                                 </span>
                               )}
                             </span>

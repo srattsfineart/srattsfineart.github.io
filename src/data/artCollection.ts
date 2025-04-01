@@ -413,6 +413,24 @@ export const artCollection: ArtPiece[] = [
     cardBundleOfFourPrice: 22,
     cardSizes: ['5x7']
   },
+  {
+    id: 28,
+    showInGallery: true,
+    title: "My American Dream",
+    medium: "Oil on canvas",
+    dimensions: "12 × 16 inches",
+    imageUrl: "/assets/images/My American Dream.jpg",
+    categories: ["Western", "Animals", "Figurative"],
+    sold: true,
+    artPrice: 250,
+    availableAsPrint: false,
+    printPrices: [45, 55, 70, 95],
+    printSizes: ['8×10', '9×12', '12×16', '16x20'],
+    availableAsCard: true,
+    cardPrices: [5],
+    cardBundleOfFourPrice: 22,
+    cardSizes: ['5x7']
+  },
 ];
 
 export const categories = [...new Set(artCollection.flatMap(piece => piece.categories))];

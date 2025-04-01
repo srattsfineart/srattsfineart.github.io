@@ -71,8 +71,8 @@ const About = () => {
           >
             <div className="rounded-lg overflow-hidden shadow-lg max-w-md">
               <img 
-                src="/assets/images/Water in the Gila.jpg" 
-                alt="Water in the Gila" 
+                src="/assets/images/My American Dream.jpg" 
+                alt="My American Dream" 
                 className="w-full h-auto object-cover"
               />
             </div>

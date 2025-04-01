@@ -51,7 +51,7 @@ const Footer = () => {
                 {/* <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" style={{ color: '#666', transition: 'color 0.3s ease' }}>
                   <FaInstagram size={20} />
                 </a> */}
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" style={{ color: '#666', transition: 'color 0.3s ease' }}>
+                <a href="https://www.facebook.com/profile.php?id=61574466946030" target="_blank" rel="noopener noreferrer" style={{ color: '#666', transition: 'color 0.3s ease' }}>
                   <FaFacebook size={20} /> See more info on Facebook
                 </a>
                 {/* <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" style={{ color: '#666', transition: 'color 0.3s ease' }}>
