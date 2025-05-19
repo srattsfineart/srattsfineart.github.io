@@ -280,6 +280,22 @@ const Commissions = () => {
                   />
                 </div>
               </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="flex-shrink-0"
+              >
+                <div className="rounded-lg overflow-hidden shadow-lg max-w-xs">
+                  <img 
+                    src="/assets/images/Blaine on that Ol' Pony.jpg" 
+                    alt="Blaine on that Ol' Pony" 
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+              </motion.div>
             </div>
           </motion.div>
         </div>
