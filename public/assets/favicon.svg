@@ -1,4 +1,45 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
   <rect width="32" height="32" fill="none"/>
   <path d="M10,10c0-3,3-5,6-5s6,2,6,5c0,2.5-2,3.5-4,4c3,0.5,4.5,2,4.5,4.5c0,3.5-3.5,5.5-6.5,5.5s-6.5-2-6.5-5.5h4.5c0,1,1,1.5,2,1.5s2-0.5,2-1.5s-1-1.5-2.5-1.5c-0.5,0-1,0-1.5,0v-3.5c0.5,0,1,0,1.5,0c1.5,0,2-0.5,2-1.5s-0.5-1.5-2-1.5s-2,0.5-2,1.5H10z" fill="black" stroke="black" stroke-width="0.7"/>
+  <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+    <!-- Cactus body -->
+    <ellipse cx="16" cy="22" rx="4" ry="8" fill="#2d7d32" stroke="#1b5e20" stroke-width="0.5"/>
+    
+    <!-- Cactus arm (left) -->
+    <ellipse cx="11" cy="18" rx="2" ry="4" fill="#2d7d32" stroke="#1b5e20" stroke-width="0.5"/>
+    
+    <!-- Cactus arm (right) -->
+    <ellipse cx="21" cy="16" rx="2" ry="3" fill="#2d7d32" stroke="#1b5e20" stroke-width="0.5"/>
+    
+    <!-- Cactus spines -->
+    <g stroke="#1b5e20" stroke-width="0.3" opacity="0.6">
+      <line x1="14" y1="16" x2="14" y2="17"/>
+      <line x1="16" y1="15" x2="16" y2="16"/>
+      <line x1="18" y1="16" x2="18" y2="17"/>
+      <line x1="14" y1="20" x2="14" y2="21"/>
+      <line x1="18" y1="20" x2="18" y2="21"/>
+      <line x1="16" y1="24" x2="16" y2="25"/>
+      <line x1="10" y1="16" x2="10" y2="17"/>
+      <line x1="12" y1="18" x2="12" y2="19"/>
+      <line x1="22" y1="15" x2="22" y2="16"/>
+      <line x1="20" y1="17" x2="20" y2="18"/>
+    </g>
+    
+    <!-- Red flower -->
+    <g transform="translate(16,12)">
+      <!-- Flower petals -->
+      <circle cx="-2" cy="-1" r="2" fill="#d32f2f" opacity="0.9"/>
+      <circle cx="2" cy="-1" r="2" fill="#d32f2f" opacity="0.9"/>
+      <circle cx="0" cy="-3" r="2" fill="#d32f2f" opacity="0.9"/>
+      <circle cx="-1.5" cy="1" r="2" fill="#d32f2f" opacity="0.9"/>
+      <circle cx="1.5" cy="1" r="2" fill="#d32f2f" opacity="0.9"/>
+      
+      <!-- Flower center -->
+      <circle cx="0" cy="0" r="1.5" fill="#ffeb3b"/>
+      <circle cx="0" cy="0" r="0.8" fill="#ffc107"/>
+    </g>
+    
+    <!-- Ground/pot -->
+    <rect x="10" y="28" width="12" height="3" rx="1" fill="#8d6e63"/>
+  </svg>
 </svg>
