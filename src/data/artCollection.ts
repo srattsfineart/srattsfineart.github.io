@@ -24,6 +24,32 @@ export interface ArtPiece {
 
 export const artCollection: ArtPiece[] = [
   {
+    id: 33,
+    showInGallery: true,
+    title: "Desert Life",
+    medium: "Oil on panel",
+    dimensions: "6 × 8 inches",
+    imageUrl: "/assets/images/Desert Life.jpg",
+    categories: ["Landscape"],
+    sold: false,
+    artPrice: 150,
+    availableAsPrint: false,
+    availableAsCard: false,
+  },
+  {
+    id: 34,
+    showInGallery: true,
+    title: "Arid Beauty",
+    medium: "Oil on linen",
+    dimensions: "8 × 10 inches",
+    imageUrl: "/assets/images/Arid Beauty.jpg",
+    categories: ["Landscape"],
+    sold: true,
+    artPrice: 225,
+    availableAsPrint: false,
+    availableAsCard: false,
+  },
+  {
     id: 1,
     showInGallery: true,
     title: "A Day in Saguache",
