@@ -3,8 +3,9 @@ import { motion } from 'framer-motion';
 import { artCollection } from '../data/artCollection';
 
 const Home = () => {
-  // Get 3 featured artworks
-  const featuredArt = artCollection?.filter(art => art.id === 17 || art.id === 14 || art.id === 3);
+  // Get 3 featured artworks in specified order
+  const featuredIds = [3, 14, 39];
+  const featuredArt = featuredIds.map(id => artCollection?.find(art => art.id === id)).filter((art): art is NonNullable<typeof art> => art !== undefined);
 
   return (
     <div className="home-page">
