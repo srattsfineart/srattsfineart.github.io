@@ -567,7 +567,7 @@ export const artCollection: ArtPiece[] = [
     imageUrl: "/assets/images/Salt River Watering Hole.jpg",
     categories: ["Animals", "Landscape"],
     sold: false,
-    artPrice: 250,
+    artPrice: 300,
     availableAsPrint: true,
     printPrices: [45, 55, 70, 95],
     printSizes: ['8×10', '9×12', '12×16', '16x20'],
