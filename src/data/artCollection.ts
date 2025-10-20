@@ -310,7 +310,7 @@ export const artCollection: ArtPiece[] = [
     dimensions: "9 × 12 inches",
     imageUrl: "/assets/images/Meandering Gila River.jpg",
     categories: ["Landscape"],
-    sold: false,
+    sold: true,
     artPrice: 400,
     availableAsPrint: true,
     printPrices: [45, 55, 70, 95],
