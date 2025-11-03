@@ -24,6 +24,24 @@ export interface ArtPiece {
 
 export const artCollection: ArtPiece[] = [
   {
+    id: 40,
+    showInGallery: true,
+    title: "Magnificent Watusi",
+    medium: "Oil on canvas",
+    dimensions: "16 × 20 inches",
+    imageUrl: "/assets/images/Magnificent Watusi.jpg",
+    categories: ["Animals", "Landscape"],
+    sold: false,
+    artPrice: 500,
+    availableAsPrint: true,
+    printPrices: [45, 55, 70, 95],
+    printSizes: ['8×10', '9×12', '12×16', '16x20'],
+    availableAsCard: true,
+    cardPrices: [5],
+    cardBundleOfFourPrice: 22,
+    cardSizes: ['5x7']
+  },
+  {
     id: 39,
     showInGallery: true,
     title: "Woodland Watcher",
