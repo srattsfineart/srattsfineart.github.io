@@ -5,10 +5,11 @@ import { artCollection, categories } from '../data/artCollection';
 import ArtCard from '../components/ArtCard';
 import ArtModal from '../components/ArtModal';
 import type { ArtPiece } from '../data/artCollection';
+import type { ArtCategory } from '../data/artCollection';
 
 const Gallery = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [selectedCategory, setSelectedCategory] = useState<string>('All');
+  const [selectedCategory, setSelectedCategory] = useState<'All' | ArtCategory>('All');
   const [showAvailableOnly, setShowAvailableOnly] = useState<boolean>(false);
   const [filteredArt, setFilteredArt] = useState<ArtPiece[]>(artCollection);
   const [selectedArt, setSelectedArt] = useState<ArtPiece | null>(null);
@@ -55,7 +56,7 @@ const Gallery = () => {
     setSearchParams({});
   };
 
-  const handleCategoryChange = (category: string) => {
+  const handleCategoryChange = (category: 'All' | ArtCategory) => {
     setSelectedCategory(category);
   };
 
@@ -83,7 +84,7 @@ const Gallery = () => {
             onClick={() => handleCategoryChange('All')} 
           />
           
-          {categories.map(category => (
+          {categories.map((category: ArtCategory) => (
             <CategoryButton 
               key={category} 
               category={category} 
@@ -146,7 +147,7 @@ const Gallery = () => {
 };
 
 interface CategoryButtonProps {
-  category: string;
+  category: 'All' | ArtCategory;
   isSelected: boolean;
   onClick: () => void;
 }

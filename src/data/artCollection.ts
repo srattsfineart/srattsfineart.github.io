@@ -1,632 +1,482 @@
-export interface ArtPiece {
+export class ArtPiece {
   id: number;
   title: string;
   showInGallery: boolean;
   description?: string;
-  medium: string;
-  dimensions: string;
+  medium: ArtMedium;
+  dimensions: ArtDimension;
   imageUrl: string;
-  categories: string[];
-  
+  categories: ArtCategory[];
   sold: boolean;
   artPrice: number;
-  
   availableAsPrint?: boolean;
   printPrices?: number[];
-  printSizes?: string[];
-  
+  printSizes?: ArtPrintSize[];
   availableAsCard?: boolean;
   cardPrices?: number[];
   cardInnerContent?: string;
   cardBundleOfFourPrice?: number;
-  cardSizes?: string[];
+  cardSizes?: ArtCardSize[];
+  
+  constructor(fields: Partial<ArtPiece> = {}) {
+    this.id = fields.id || 0;
+    this.title = fields.title || "";
+    this.showInGallery = fields.showInGallery ?? true;
+    this.description = fields.description || "";
+    this.medium = fields.medium || "Oil on canvas";
+    this.dimensions = fields.dimensions || "8 x 10 inches";
+    this.imageUrl = fields.imageUrl || "";
+    this.categories = fields.categories || ["Landscape"];
+    this.sold = fields.sold ?? false;
+    this.artPrice = fields.artPrice || 500;
+    this.availableAsPrint = fields.availableAsPrint ?? false;
+    this.printPrices = fields.printPrices || [45, 55, 70, 95];
+    this.printSizes = fields.printSizes || ["8 x 10 inches", "9 x 12 inches", "12 x 16 inches", "16 x 20 inches"];
+    this.availableAsCard = fields.availableAsCard ?? false;
+    this.cardPrices = fields.cardPrices || [5];
+    this.cardInnerContent = fields.cardInnerContent || "";
+    this.cardBundleOfFourPrice = fields.cardBundleOfFourPrice || 22;
+    this.cardSizes = fields.cardSizes || ["5 x 7 inches"];
+  }
 }
 
+export type ArtCategory = 
+  "Animals" 
+  | "Landscape" 
+  | "Western" 
+  | "Commission" 
+  | "Figurative";
+
+export type ArtMedium = 
+  "Oil on canvas" 
+  | "Oil on panel" 
+  | "Oil on linen" 
+  | "Oil on board";
+
+export type ArtDimension = 
+  "6 x 8 inches"  
+  | "8 x 10 inches" 
+  | "9 x 12 inches"
+  | "10 x 10 inches"
+  | "11 x 14 inches"
+  | "12 x 16 inches"
+  | "10 x 20 inches"
+  | "16 x 20 inches"
+  | "20 x 20 inches"
+  | "18 x 24 inches"
+  | "24 x 36 inches";
+
+export type ArtPrintSize = 
+  "8 x 10 inches" 
+  | "9 x 12 inches" 
+  | "12 x 16 inches" 
+  | "16 x 20 inches";
+
+export type ArtCardSize = 
+  "5 x 7 inches";
+
 export const artCollection: ArtPiece[] = [
-  {
+  
+  new ArtPiece({
+    id: 42,
+    title: "Free and Easy",
+    medium: "Oil on panel",
+    dimensions: "6 x 8 inches",
+    imageUrl: "/assets/images/Free and Easy.jpg",
+    categories: ["Animals", "Landscape"],
+    artPrice: 150,
+  }),
+  new ArtPiece({
+   id: 41,
+   title: "Zen on the Rio Grande",
+   dimensions: "18 x 24 inches",
+   imageUrl: "/assets/images/Zen on the Rio Grande.jpg",
+   sold: true,
+   artPrice: 500,
+   availableAsPrint: true,
+   availableAsCard: true,
+  }),
+  new ArtPiece({
     id: 40,
-    showInGallery: true,
     title: "Magnificent Watusi",
-    medium: "Oil on canvas",
-    dimensions: "16 × 20 inches",
+    dimensions: "16 x 20 inches",
     imageUrl: "/assets/images/Magnificent Watusi.jpg",
     categories: ["Animals", "Landscape"],
-    sold: false,
     artPrice: 500,
     availableAsPrint: true,
-    printPrices: [45, 55, 70, 95],
-    printSizes: ['8×10', '9×12', '12×16', '16x20'],
     availableAsCard: true,
-    cardPrices: [5],
-    cardBundleOfFourPrice: 22,
-    cardSizes: ['5x7']
-  },
-  {
+  }),
+  new ArtPiece({
     id: 39,
-    showInGallery: true,
     title: "Woodland Watcher",
     medium: "Oil on linen",
-    dimensions: "9 × 12 inches",
+    dimensions: "9 x 12 inches",
     imageUrl: "/assets/images/Woodland Watcher.jpg",
     categories: ["Animals", "Landscape"],
     sold: true,
     artPrice: 450,
     availableAsPrint: true,
-    printPrices: [45, 55, 70, 95],
-    printSizes: ['8×10', '9×12', '12×16', '16x20'],
     availableAsCard: true,
-    cardPrices: [5],
-    cardBundleOfFourPrice: 22,
-    cardSizes: ['5x7']
-  },
-  {
+  }),
+  new ArtPiece({
     id: 38,
-    showInGallery: true,
     title: "Riverwalker",
     medium: "Oil on board",
-    dimensions: "11 × 14 inches",
+    dimensions: "11 x 14 inches",
     imageUrl: "/assets/images/Riverwalker.jpg",
     categories: ["Animals", "Landscape"],
-    sold: false,
     artPrice: 450,
     availableAsPrint: true,
-    printPrices: [45, 55, 70, 95],
-    printSizes: ['8×10', '9×12', '12×16', '16x20'],
     availableAsCard: true,
-    cardPrices: [5],
-    cardBundleOfFourPrice: 22,
-    cardSizes: ['5x7']
-  },
-  {
+  }),
+  new ArtPiece({
     id: 37,
-    showInGallery: true,
     title: "Wonderfoaly Content",
     medium: "Oil on panel",
-    dimensions: "6 × 8 inches",
+    dimensions: "6 x 8 inches",
     imageUrl: "/assets/images/Wonderfoaly Content.jpg",
     categories: ["Animals"],
-    sold: false,
     artPrice: 150,
-    availableAsPrint: false,
     availableAsCard: true,
-    cardPrices: [5],
-    cardBundleOfFourPrice: 22,
-    cardSizes: ['5x7']
-  },
-  {
+  }),
+  new ArtPiece({
     id: 36,
-    showInGallery: true,
     title: "Summer in the High Meadow",
-    medium: "Oil on canvas",
-    dimensions: "11 × 14 inches",
+    dimensions: "11 x 14 inches",
     imageUrl: "/assets/images/Summer in the High Meadow.jpeg",
     categories: ["Landscape", "Animals"],
-    sold: false,
     artPrice: 400,
     availableAsPrint: true,
-    printPrices: [45, 55, 70, 95],
-    printSizes: ['8×10', '9×12', '12×16', '16x20'],
     availableAsCard: true,
-    cardPrices: [5],
-    cardBundleOfFourPrice: 22,
-    cardSizes: ['5x7']
-  },
-  {
+  }),
+  new ArtPiece({
     id: 35,
-    showInGallery: true,
     title: "Daybreak at Bar M",
     medium: "Oil on linen",
-    dimensions: "8 × 10 inches",
     imageUrl: "/assets/images/Daybreak at Bar M.jpeg",
     categories: ["Western", "Landscape"],
-    sold: false,
     artPrice: 250,
     availableAsPrint: true,
-    printPrices: [45, 55, 70, 95],
-    printSizes: ['8×10', '9×12', '12×16', '16x20'],
     availableAsCard: true,
-    cardPrices: [5],
-    cardBundleOfFourPrice: 22,
-    cardSizes: ['5x7']
-  },
-  {
+  }),
+  new ArtPiece({
     id: 33,
-    showInGallery: true,
     title: "Desert Life",
     medium: "Oil on panel",
-    dimensions: "6 × 8 inches",
+    dimensions: "6 x 8 inches",
     imageUrl: "/assets/images/Desert Life.jpg",
-    categories: ["Landscape"],
-    sold: false,
     artPrice: 200,
-    availableAsPrint: false,
-    availableAsCard: false,
-  },
-  {
+  }),
+  new ArtPiece({
     id: 34,
-    showInGallery: true,
     title: "Arid Beauty",
     medium: "Oil on linen",
-    dimensions: "8 × 10 inches",
     imageUrl: "/assets/images/Arid Beauty.jpg",
-    categories: ["Landscape"],
     sold: true,
     artPrice: 225,
-    availableAsPrint: false,
-    availableAsCard: false,
-  },
-  {
+  }),
+  new ArtPiece({
     id: 1,
-    showInGallery: true,
     title: "A Day in Saguache",
-    medium: "Oil on canvas",
     dimensions: "12 x 16 inches",
     imageUrl: "/assets/images/A Day in Saguache.jpg",
     categories: ["Figurative", "Animals"],
     sold: true,
     artPrice: 650,
     availableAsPrint: true,
-    printPrices: [45, 55, 70, 95],
-    printSizes: ['8×10', '9×12', '12×16', '16x20'],
-  },
-  {
+  }),
+  new ArtPiece({
     id: 2,
-    showInGallery: true,
     title: "A Dollop of Daisies",
     description: "Framed in a brown wood floating frame.",
     medium: "Oil on panel",
-    dimensions: "6 × 8 inches",
+    dimensions: "6 x 8 inches",
     imageUrl: "/assets/images/A Dollop of Daisies.jpg",
     categories: ["Animals", "Western"],
-    sold: false,
     artPrice: 150,
     availableAsPrint: true,
-    printPrices: [45, 55, 70, 95],
-    printSizes: ['8×10', '9×12', '12×16', '16x20'],
     availableAsCard: true,
-    cardPrices: [5],
-    cardBundleOfFourPrice: 22,
-    cardSizes: ['5x7']
-  },
-  {
+  }),
+  new ArtPiece({
     id: 3,
-    showInGallery: true,
     title: "Ankole Watusi in Pennsylvania",
-    medium: "Oil on canvas",
-    dimensions: "16 × 20 inches",
+    dimensions: "16 x 20 inches",
     imageUrl: "/assets/images/Ankole Watusi in Pennsylvania.jpg",
     categories: ["Animals"],
     sold: true,
     artPrice: 675,
-    availableAsPrint: false,
-  },
-  {
+  }),
+  new ArtPiece({
     id: 12,
-    showInGallery: true,
     title: "Her American Dream",
-    medium: "Oil on canvas",
-    dimensions: "12 × 16 inches",
+    dimensions: "12 x 16 inches",
     imageUrl: "/assets/images/Her American Dream.jpg",
     categories: ["Western", "Animals", "Figurative"],
     sold: true,
     artPrice: 250,
     availableAsPrint: true,
-    printPrices: [45, 55, 70, 95],
-    printSizes: ['8×10', '9×12', '12×16', '16x20'],
     availableAsCard: true,
-    cardPrices: [5],
-    cardBundleOfFourPrice: 22,
-    cardSizes: ['5x7']
-  },
-  {
+  }),
+  new ArtPiece({
     id: 5,
-    showInGallery: true,
-    title: "Butterfly Pavillion Tuscon",
-    medium: "Oil on canvas",
-    dimensions: "11 × 14 inches",
-    imageUrl: "/assets/images/Butterfly Pavillion Tuscon.jpg",
-    categories: ["Landscape"],
+    title: "Butterfly Pavilion Tuscon",
+    dimensions: "11 x 14 inches",
+    imageUrl: "/assets/images/Butterfly Pavilion Tuscon.jpg",
     sold: true,
     artPrice: 325,
-    availableAsPrint: false,
     availableAsCard: true,
-    cardPrices: [5],
-    cardBundleOfFourPrice: 22,
-    cardSizes: ['5x7']
-  },
-  {
+  }),
+  new ArtPiece({
     id: 6,
-    showInGallery: true,
     title: "Casper & Doug",
-    medium: "Oil on canvas",
-    dimensions: "16 × 20 inches",
+    dimensions: "16 x 20 inches",
     imageUrl: "/assets/images/Casper and Doug.jpg",
     categories: ["Commission", "Animals"],
     sold: true,
     artPrice: 500,
-    availableAsPrint: false,
-  },
-  {
+  }),
+  new ArtPiece({
     id: 7,
-    showInGallery: true,
     title: "Cow in Globemallow",
-    medium: "Oil on canvas",
-    dimensions: "16 × 20 inches",
+    dimensions: "16 x 20 inches",
     imageUrl: "/assets/images/Cow in Globemallow.jpg",
     categories: ["Animals"],
     sold: true,
     artPrice: 500,
-    availableAsPrint: false,
-  },
-  {
+  }),
+  new ArtPiece({
     id: 8,
-    showInGallery: true,
     title: "Evening Blooms",
     description: "Palette knife on unframed panel.",
     medium: "Oil on panel",
-    dimensions: "11 × 14 inches",
+    dimensions: "11 x 14 inches",
     imageUrl: "/assets/images/Evening Blooms.jpg",
-    categories: ["Landscape"],
-    sold: false,
     artPrice: 375,
-    availableAsPrint: false,
-  },
-  {
+  }),
+  new ArtPiece({
     id: 9,
-    showInGallery: true,
     title: "Evening Color",
     description: "Palette knife on unframed panel.",
     medium: "Oil on panel",
-    dimensions: "8 × 10 inches",
     imageUrl: "/assets/images/Evening Color.jpg",
-    categories: ["Landscape"],
-    sold: false,
     artPrice: 350,
-    availableAsPrint: false,
     availableAsCard: true,
-    cardPrices: [5],
-    cardBundleOfFourPrice: 22,
-    cardSizes: ['5x7']
-  },
-  {
+  }),
+  new ArtPiece({
     id: 13,
-    showInGallery: true,
     title: "Maricopa Wild Horses",
     description: "On unframed canvas.",
-    medium: "Oil on canvas",
-    dimensions: "8 × 10 inches",
     imageUrl: "/assets/images/Maricopa Wild Horses.jpg",
     categories: ["Animals"],
-    sold: false,
     artPrice: 350,
     availableAsPrint: true,
-    printPrices: [45, 55, 70, 95],
-    printSizes: ['8×10', '9×12', '12×16', '16x20'],
     availableAsCard: true,
-    cardPrices: [5],
-    cardBundleOfFourPrice: 22,
-    cardSizes: ['5x7']
-  },
-  {
+  }),
+  new ArtPiece({
     id: 10,
-    showInGallery: true,
     title: "In Pursuit of Two Feet",
-    medium: "Oil on canvas",
-    dimensions: "8 × 10 inches",
     imageUrl: "/assets/images/In Pursuit of Two Feet.jpg",
     categories: ["Western", "Animals", "Figurative"],
     sold: true,
     artPrice: 175,
-    availableAsPrint: false,
-  },
-  {
+  }),
+  new ArtPiece({
     id: 14,
-    showInGallery: true,
     title: "Meandering Gila River",
     description: "On unframed canvas.",
-    medium: "Oil on canvas",
-    dimensions: "9 × 12 inches",
+    dimensions: "9 x 12 inches",
     imageUrl: "/assets/images/Meandering Gila River.jpg",
-    categories: ["Landscape"],
     sold: true,
     artPrice: 400,
     availableAsPrint: true,
-    printPrices: [45, 55, 70, 95],
-    printSizes: ['8×10', '9×12', '12×16', '16x20'],
-  },
-  {
+  }),
+  new ArtPiece({
     id: 15,
-    showInGallery: true,
     title: "Mo",
     medium: "Oil on panel",
-    dimensions: "9 × 12 inches",
+    dimensions: "9 x 12 inches",
     imageUrl: "/assets/images/Mo.jpg",
     categories: ["Commission", "Animals"],
     sold: true,
     artPrice: 350,
-    availableAsPrint: false,
-  },
-  {
+  }),
+  new ArtPiece({
     id: 16,
-    showInGallery: true,
     title: "Natalie & Kos",
-    medium: "Oil on canvas",
-    dimensions: "8 × 10 inches",
     imageUrl: "/assets/images/Natalie and Kos.jpg",
     categories: ["Figurative", "Animals"],
     sold: true,
     artPrice: 325,
-    availableAsPrint: false,
-  },
-  {
+  }),
+  new ArtPiece({
     id: 11,
-    showInGallery: true,
     title: "Living an American Dream",
-    medium: "Oil on canvas",
     description: "On unframed canvas.",
-    dimensions: "9 × 12 inches",
+    dimensions: "9 x 12 inches",
     imageUrl: "/assets/images/Living an American Dream.jpg",
     categories: ["Western", "Animals", "Figurative"],
-    sold: false,
     artPrice: 300,
-    availableAsPrint: false,
-    availableAsCard: false,
-  },
-  {
+  }),
+  new ArtPiece({
     id: 17,
-    showInGallery: true,
     title: "Praise for a Job Well Done",
-    medium: "Oil on canvas",
-    dimensions: "16 × 20 inches",
+    dimensions: "16 x 20 inches",
     imageUrl: "/assets/images/Praise for a Job Well Done.jpg",
     categories: ["Western", "Animals", "Figurative"],
     sold: true,
     artPrice: 750,
     availableAsPrint: true,
-    printPrices: [45, 55, 70, 95],
-    printSizes: ['8×10', '9×12', '12×16', '16x20'],
-  },
-  {
+  }),
+  new ArtPiece({
     id: 18,
-    showInGallery: true,
     title: "Swoop",
     medium: "Oil on panel",
-    dimensions: "8 × 10 inches",
     imageUrl: "/assets/images/Swoop.jpg",
     categories: ["Animals"],
     sold: true,
     artPrice: 250,
-    availableAsPrint: false,
-  },
-  {
+  }),
+  new ArtPiece({
     id: 19,
-    showInGallery: true,
     title: "Time Well Spent",
     description: "On unframed canvas.",
-    medium: "Oil on canvas",
-    dimensions: "16 × 20 inches",
+    dimensions: "16 x 20 inches",
     imageUrl: "/assets/images/Time Well Spent.jpg",
     categories: ["Landscape", "Figurative", "Western"],
-    sold: false,
     artPrice: 850,
     availableAsPrint: true,
-    printPrices: [45, 55, 70, 95],
-    printSizes: ['8×10', '9×12', '12×16', '16x20'],
-  },
-  {
+  }),
+  new ArtPiece({
     id: 20,
-    showInGallery: true,
     title: "Tiny Tyrant",
     medium: "Oil on panel",
-    dimensions: "6 × 8 inches",
+    dimensions: "6 x 8 inches",
     imageUrl: "/assets/images/Tiny Tyrant.jpg",
     categories: ["Animals"],
     sold: true,
     artPrice: 325,
     availableAsPrint: true,
-    printPrices: [45, 55, 70, 95],
-    printSizes: ['8×10', '9×12', '12×16', '16x20'],
-  },
-  {
+  }),
+  new ArtPiece({
     id: 21,
-    showInGallery: true,
     title: "Toby's Contentment",
-    medium: "Oil on canvas",
-    dimensions: "10 × 10 inches",
+    dimensions: "10 x 10 inches",
     imageUrl: "/assets/images/Toby's Contentment.jpg",
     categories: ["Figurative", "Animals"],
     sold: true,
     artPrice: 375,
-    availableAsPrint: false,
-  },
-  {
+  }),
+  new ArtPiece({
     id: 22,
-    showInGallery: true,
     title: "Under a Watchful Eye",
     description: "On unframed canvas (with minimal damage).",
-    medium: "Oil on canvas",
-    dimensions: "10 × 20 inches",
+    dimensions: "10 x 20 inches",
     imageUrl: "/assets/images/Under a Watchful Eye.jpg",
-    categories: ["Landscape"],
-    sold: false,
     artPrice: 350,
-    availableAsPrint: false,
-  },
-  {
+  }),
+  new ArtPiece({
     id: 23,
-    showInGallery: true,
     title: "Water in the Gila",
-    medium: "Oil on canvas",
-    dimensions: "11 × 14 inches",
+    dimensions: "11 x 14 inches",
     imageUrl: "/assets/images/Water in the Gila.jpg",
-    categories: ["Landscape"],
-    sold: false,
     artPrice: 500,
     availableAsPrint: true,
-    printPrices: [45, 55, 70, 95],
-    printSizes: ['8×10', '9×12', '12×16', '16x20'],
-  },
-  {
+  }),
+  new ArtPiece({
     id: 24,
-    showInGallery: true,
     title: "It's Not Polite to Steer",
-    medium: "Oil on canvas",
-    dimensions: "9 × 12 inches",
+    dimensions: "9 x 12 inches",
     imageUrl: "/assets/images/It's Not Polite to Steer.jpg",
     categories: ["Animals", "Western"],
-    sold: false,
     artPrice: 400,
     availableAsPrint: true,
-    printPrices: [45, 55, 70, 95],
-    printSizes: ['8×10', '9×12', '12×16', '16x20'],
     availableAsCard: true,
-    cardPrices: [5],
     cardInnerContent: "It's Not Polite to Steer",
-    cardBundleOfFourPrice: 22,
-    cardSizes: ['5x7']
-  },
-  {
+  }),
+  new ArtPiece({
     id: 25,
-    showInGallery: true,
     title: "Those Lovely Cacti",
-    medium: "Oil on canvas",
-    dimensions: "12 × 16 inches",
+    dimensions: "12 x 16 inches",
     imageUrl: "/assets/images/Those Lovely Cacti.jpg",
-    categories: ["Landscape"],
-    sold: false,
     artPrice: 400,
-    availableAsPrint: false,
     availableAsCard: true,
-    cardPrices: [5],
-    cardBundleOfFourPrice: 22,
-    cardSizes: ['5x7']
-  },
-  {
+  }),
+  new ArtPiece({
     id: 26,
-    showInGallery: true,
     title: "Winding Aspen Trail",
     medium: "Oil on panel",
-    dimensions: "9 × 12 inches",
+    dimensions: "9 x 12 inches",
     imageUrl: "/assets/images/Winding Aspen Trail.jpg",
-    categories: ["Landscape"],
-    sold: false,
     artPrice: 300,
-    availableAsPrint: false,
-  },
-  {
+  }),
+  new ArtPiece({
     id: 4,
-    showInGallery: true,
     title: "Beauty in Desolation",
     medium: "Oil on panel",
-    dimensions: "8 × 10 inches",
     imageUrl: "/assets/images/Beauty in Desolation.jpg",
-    categories: ["Landscape"],
     sold: true,
     artPrice: 150,
-    availableAsPrint: false,
     availableAsCard: true,
-    cardPrices: [5],
-    cardBundleOfFourPrice: 22,
-    cardSizes: ['5x7']
-  },
-  {
+  }),
+  new ArtPiece({
     id: 27,
     showInGallery: false,
     title: "Beauty in Desolation - B&W",
     medium: "Oil on panel",
-    dimensions: "8 × 10 inches",
     imageUrl: "/assets/images/Beauty in Desolation - B&W.jpg",
-    categories: ["Landscape"],
     sold: true,
     artPrice: 150,
-    availableAsPrint: false,
     availableAsCard: true,
-    cardPrices: [5],
-    cardBundleOfFourPrice: 22,
-    cardSizes: ['5x7']
-  },
-  {
+  }),
+  new ArtPiece({
     id: 28,
-    showInGallery: true,
     title: "My American Dream",
-    medium: "Oil on canvas",
-    dimensions: "24 × 36 inches",
+    dimensions: "24 x 36 inches",
     imageUrl: "/assets/images/My American Dream.jpg",
     categories: ["Western", "Animals", "Figurative"],
-    sold: false,
     artPrice: 2500,
     availableAsPrint: true,
-    printPrices: [45, 55, 70, 95],
-    printSizes: ['8×10', '9×12', '12×16', '16x20'],
     availableAsCard: true,
-    cardPrices: [5],
-    cardBundleOfFourPrice: 22,
-    cardSizes: ['5x7']
-  },
-  {
+  }),
+  new ArtPiece({
     id: 29,
-    showInGallery: true,
     title: "Jan's Poodle",
     medium: "Oil on panel",
-    dimensions: "8 × 10 inches",
     imageUrl: "/assets/images/Jan's Poodle.jpg",
     categories: ["Animals", "Commission"],
     sold: true,
     artPrice: 375,
-    availableAsPrint: false,
-    availableAsCard: false,
-  },
-  {
+  }),
+  new ArtPiece({
     id: 30,
-    showInGallery: true,
     title: "Salt River Watering Hole",
     medium: "Oil on linen",
-    dimensions: "8 × 10 inches",
     imageUrl: "/assets/images/Salt River Watering Hole.jpg",
     categories: ["Animals", "Landscape"],
-    sold: false,
     artPrice: 300,
     availableAsPrint: true,
-    printPrices: [45, 55, 70, 95],
-    printSizes: ['8×10', '9×12', '12×16', '16x20'],
     availableAsCard: true,
-    cardPrices: [5],
-    cardBundleOfFourPrice: 22,
-    cardSizes: ['5x7']
-  },
-  {
+  }),
+  new ArtPiece({
     id: 31,
-    showInGallery: true,
     title: "Blaine on that Ol' Pony",
     medium: "Oil on linen",
-    dimensions: "8 × 10 inches",
     imageUrl: "/assets/images/Blaine on that Ol' Pony.jpg",
     categories: ["Animals", "Commission", "Western", "Figurative"],
     sold: true,
     artPrice: 400,
     availableAsPrint: true,
-    printPrices: [45, 55, 70, 95],
-    printSizes: ['8×10', '9×12', '12×16', '16x20'],
-    availableAsCard: false
-  },
-  {
+  }),
+  new ArtPiece({
     id: 32,
-    showInGallery: true,
     title: "Untamed American Dream",
-    medium: "Oil on canvas",
-    dimensions: "20 × 20 inches",
+    dimensions: "20 x 20 inches",
     imageUrl: "/assets/images/Untamed American Dream.jpg",
     categories: ["Western", "Animals", "Figurative"],
-    sold: false,
     artPrice: 800,
     availableAsPrint: true,
-    printPrices: [45, 55, 70, 95],
-    printSizes: ['8×10', '9×12', '12×16', '16x20'],
     availableAsCard: true,
-    cardPrices: [5],
-    cardBundleOfFourPrice: 22,
-    cardSizes: ['5x7']
-  },
+  })
 ];
 
 export const categories = [...new Set(artCollection.flatMap(piece => piece.categories))];
