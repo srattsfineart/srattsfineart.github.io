@@ -51,7 +51,8 @@ export type ArtMedium =
   "Oil on canvas" 
   | "Oil on panel" 
   | "Oil on linen" 
-  | "Oil on board";
+  | "Oil on board"
+  | "Giclée print";
 
 export type ArtDimension = 
   "6 x 8 inches"  
@@ -154,9 +155,8 @@ export const artCollection: ArtPiece[] = [
     medium: "Oil on linen",
     imageUrl: "/assets/images/Daybreak at Bar M.jpeg",
     categories: ["Western", "Landscape"],
+    sold: true,
     artPrice: 250,
-    availableAsPrint: true,
-    availableAsCard: true,
   }),
   new ArtPiece({
     id: 33,
@@ -164,15 +164,14 @@ export const artCollection: ArtPiece[] = [
     medium: "Oil on panel",
     dimensions: "6 x 8 inches",
     imageUrl: "/assets/images/Desert Life.jpg",
-    artPrice: 200,
+    artPrice: 150,
   }),
   new ArtPiece({
     id: 34,
     title: "Arid Beauty",
     medium: "Oil on linen",
     imageUrl: "/assets/images/Arid Beauty.jpg",
-    sold: true,
-    artPrice: 225,
+    artPrice: 200,
   }),
   new ArtPiece({
     id: 1,
@@ -209,10 +208,10 @@ export const artCollection: ArtPiece[] = [
     id: 12,
     title: "Her American Dream",
     dimensions: "12 x 16 inches",
+    medium: "Giclée print",
     imageUrl: "/assets/images/Her American Dream.jpg",
     categories: ["Western", "Animals", "Figurative"],
-    sold: true,
-    artPrice: 250,
+    artPrice: 100,
     availableAsPrint: true,
     availableAsCard: true,
   }),
@@ -433,7 +432,7 @@ export const artCollection: ArtPiece[] = [
     dimensions: "24 x 36 inches",
     imageUrl: "/assets/images/My American Dream.jpg",
     categories: ["Western", "Animals", "Figurative"],
-    artPrice: 2500,
+    artPrice: 1200,
     availableAsPrint: true,
     availableAsCard: true,
   }),
@@ -464,7 +463,6 @@ export const artCollection: ArtPiece[] = [
     categories: ["Animals", "Commission", "Western", "Figurative"],
     sold: true,
     artPrice: 400,
-    availableAsPrint: true,
   }),
   new ArtPiece({
     id: 32,
