@@ -76,8 +76,15 @@ export type ArtPrintSize =
 export type ArtCardSize = 
   "5 x 7 inches";
 
-export const artCollection: ArtPiece[] = [
-  
+export const artCollection: ArtPiece[] = [ 
+  new ArtPiece({
+    id: 43,
+    title: "Head Honcho",
+    medium: "Oil on linen",
+    imageUrl: "/assets/images/Head Honcho.jpeg",
+    categories: ["Animals"],
+    artPrice: 200,
+  }),
   new ArtPiece({
     id: 42,
     title: "Free and Easy",
