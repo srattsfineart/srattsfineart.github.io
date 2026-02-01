@@ -70,6 +70,7 @@ export type ArtDimension =
 export type ArtPrintSize = 
   "8 x 10 inches" 
   | "9 x 12 inches" 
+  | "11 x 14 inches"
   | "12 x 16 inches" 
   | "16 x 20 inches";
 
@@ -83,7 +84,7 @@ export const artCollection: ArtPiece[] = [
     medium: "Oil on linen",
     imageUrl: "/assets/images/Head Honcho.jpeg",
     categories: ["Animals"],
-    artPrice: 200,
+    artPrice: 150,
   }),
   new ArtPiece({
     id: 42,
@@ -92,14 +93,14 @@ export const artCollection: ArtPiece[] = [
     dimensions: "6 x 8 inches",
     imageUrl: "/assets/images/Free and Easy.jpg",
     categories: ["Animals", "Landscape"],
-    artPrice: 150,
+    artPrice: 95,
   }),
   new ArtPiece({
    id: 41,
    title: "Zen on the Rio Grande",
    dimensions: "18 x 24 inches",
    imageUrl: "/assets/images/Zen on the Rio Grande.jpg",
-   artPrice: 2400,
+   artPrice: 950,
    availableAsPrint: true,
    availableAsCard: true,
   }),
@@ -123,6 +124,8 @@ export const artCollection: ArtPiece[] = [
     sold: true,
     artPrice: 450,
     availableAsPrint: true,
+    printPrices: [100],
+    printSizes: ["9 x 12 inches"],
     availableAsCard: true,
   }),
   new ArtPiece({
@@ -132,7 +135,7 @@ export const artCollection: ArtPiece[] = [
     dimensions: "11 x 14 inches",
     imageUrl: "/assets/images/Riverwalker.jpg",
     categories: ["Animals", "Landscape"],
-    artPrice: 450,
+    artPrice: 300,
     availableAsPrint: true,
     availableAsCard: true,
   }),
@@ -143,7 +146,7 @@ export const artCollection: ArtPiece[] = [
     dimensions: "6 x 8 inches",
     imageUrl: "/assets/images/Wonderfoaly Content.jpg",
     categories: ["Animals"],
-    artPrice: 150,
+    artPrice: 95,
     availableAsCard: true,
   }),
   new ArtPiece({
@@ -152,7 +155,7 @@ export const artCollection: ArtPiece[] = [
     dimensions: "11 x 14 inches",
     imageUrl: "/assets/images/Summer in the High Meadow.jpeg",
     categories: ["Landscape", "Animals"],
-    artPrice: 400,
+    artPrice: 300,
     availableAsPrint: true,
     availableAsCard: true,
   }),
@@ -171,14 +174,14 @@ export const artCollection: ArtPiece[] = [
     medium: "Oil on panel",
     dimensions: "6 x 8 inches",
     imageUrl: "/assets/images/Desert Life.jpg",
-    artPrice: 150,
+    artPrice: 95,
   }),
   new ArtPiece({
     id: 34,
     title: "Arid Beauty",
     medium: "Oil on linen",
     imageUrl: "/assets/images/Arid Beauty.jpg",
-    artPrice: 200,
+    artPrice: 150,
   }),
   new ArtPiece({
     id: 1,
@@ -198,7 +201,7 @@ export const artCollection: ArtPiece[] = [
     dimensions: "6 x 8 inches",
     imageUrl: "/assets/images/A Dollop of Daisies.jpg",
     categories: ["Animals", "Western"],
-    artPrice: 150,
+    artPrice: 95,
     availableAsPrint: true,
     availableAsCard: true,
   }),
@@ -256,7 +259,7 @@ export const artCollection: ArtPiece[] = [
     medium: "Oil on panel",
     dimensions: "11 x 14 inches",
     imageUrl: "/assets/images/Evening Blooms.jpg",
-    artPrice: 375,
+    artPrice: 250,
   }),
   new ArtPiece({
     id: 9,
@@ -264,7 +267,7 @@ export const artCollection: ArtPiece[] = [
     description: "Palette knife on unframed panel.",
     medium: "Oil on panel",
     imageUrl: "/assets/images/Evening Color.jpg",
-    artPrice: 350,
+    artPrice: 125,
     availableAsCard: true,
   }),
   new ArtPiece({
@@ -273,7 +276,7 @@ export const artCollection: ArtPiece[] = [
     description: "On unframed canvas.",
     imageUrl: "/assets/images/Maricopa Wild Horses.jpg",
     categories: ["Animals"],
-    artPrice: 350,
+    artPrice: 160,
     availableAsPrint: true,
     availableAsCard: true,
   }),
@@ -320,7 +323,7 @@ export const artCollection: ArtPiece[] = [
     dimensions: "9 x 12 inches",
     imageUrl: "/assets/images/Living an American Dream.jpg",
     categories: ["Western", "Animals", "Figurative"],
-    artPrice: 300,
+    artPrice: 200,
   }),
   new ArtPiece({
     id: 17,
@@ -348,7 +351,7 @@ export const artCollection: ArtPiece[] = [
     dimensions: "16 x 20 inches",
     imageUrl: "/assets/images/Time Well Spent.jpg",
     categories: ["Landscape", "Figurative", "Western"],
-    artPrice: 850,
+    artPrice: 600,
     availableAsPrint: true,
   }),
   new ArtPiece({
@@ -374,10 +377,10 @@ export const artCollection: ArtPiece[] = [
   new ArtPiece({
     id: 22,
     title: "Under a Watchful Eye",
-    description: "On unframed canvas (with minimal damage).",
+    description: "On unframed canvas.",
     dimensions: "10 x 20 inches",
     imageUrl: "/assets/images/Under a Watchful Eye.jpg",
-    artPrice: 350,
+    artPrice: 200,
   }),
   new ArtPiece({
     id: 23,
@@ -386,6 +389,8 @@ export const artCollection: ArtPiece[] = [
     imageUrl: "/assets/images/Water in the Gila.jpg",
     artPrice: 500,
     availableAsPrint: true,
+    printPrices: [75],
+    printSizes: ["11 x 14 inches"],
   }),
   new ArtPiece({
     id: 24,
@@ -393,7 +398,7 @@ export const artCollection: ArtPiece[] = [
     dimensions: "9 x 12 inches",
     imageUrl: "/assets/images/It's Not Polite to Steer.jpg",
     categories: ["Animals", "Western"],
-    artPrice: 400,
+    artPrice: 225,
     availableAsPrint: true,
     availableAsCard: true,
     cardInnerContent: "It's Not Polite to Steer",
@@ -403,7 +408,7 @@ export const artCollection: ArtPiece[] = [
     title: "Those Lovely Cacti",
     dimensions: "12 x 16 inches",
     imageUrl: "/assets/images/Those Lovely Cacti.jpg",
-    artPrice: 400,
+    artPrice: 375,
     availableAsCard: true,
   }),
   new ArtPiece({
@@ -412,7 +417,7 @@ export const artCollection: ArtPiece[] = [
     medium: "Oil on panel",
     dimensions: "9 x 12 inches",
     imageUrl: "/assets/images/Winding Aspen Trail.jpg",
-    artPrice: 300,
+    artPrice: 200,
   }),
   new ArtPiece({
     id: 4,
@@ -458,7 +463,7 @@ export const artCollection: ArtPiece[] = [
     medium: "Oil on linen",
     imageUrl: "/assets/images/Salt River Watering Hole.jpg",
     categories: ["Animals", "Landscape"],
-    artPrice: 300,
+    artPrice: 150,
     availableAsPrint: true,
     availableAsCard: true,
   }),
