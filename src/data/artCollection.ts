@@ -174,6 +174,7 @@ export const artCollection: ArtPiece[] = [
     medium: "Oil on panel",
     dimensions: "6 x 8 inches",
     imageUrl: "/assets/images/Desert Life.jpg",
+    sold: true,
     artPrice: 95,
   }),
   new ArtPiece({
