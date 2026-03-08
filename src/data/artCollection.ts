@@ -260,6 +260,7 @@ export const artCollection: ArtPiece[] = [
     medium: "Oil on panel",
     dimensions: "11 x 14 inches",
     imageUrl: "/assets/images/Evening Blooms.jpg",
+    sold: true,
     artPrice: 250,
   }),
   new ArtPiece({
