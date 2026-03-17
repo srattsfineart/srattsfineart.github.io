@@ -382,6 +382,7 @@ export const artCollection: ArtPiece[] = [
     description: "On unframed canvas.",
     dimensions: "10 x 20 inches",
     imageUrl: "/assets/images/Under a Watchful Eye.jpg",
+    sold: true,
     artPrice: 200,
   }),
   new ArtPiece({
