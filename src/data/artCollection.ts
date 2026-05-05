@@ -52,6 +52,8 @@ export type ArtMedium =
   | "Oil on panel" 
   | "Oil on linen" 
   | "Oil on board"
+  | "Oil on masonite board"
+  | "Acrylic on panel"
   | "Giclée print";
 
 export type ArtDimension = 
@@ -79,6 +81,36 @@ export type ArtCardSize =
 
 export const artCollection: ArtPiece[] = [ 
   new ArtPiece({
+    id: 46,
+    title: "Whisperer in Training",
+    medium: "Oil on panel",
+    dimensions: "9 x 12 inches",
+    imageUrl: "/assets/images/Whisperer in Training.jpg",
+    categories: ["Animals", "Figurative"],
+    sold: true,
+    availableAsPrint: true,
+  }),
+  new ArtPiece({
+    id: 45,
+    title: "After Chrysalis",
+    medium: "Acrylic on panel",
+    dimensions: "6 x 8 inches",
+    imageUrl: "/assets/images/After Chrysalis.jpg",
+    categories: ["Figurative"],
+    sold: true,
+    availableAsPrint: true,
+  }),
+  new ArtPiece({
+    id: 44,
+    title: "Whispers of the Ancestors",
+    medium: "Oil on masonite board",
+    dimensions: "11 x 14 inches",
+    imageUrl: "/assets/images/Whispers of the Ancestors.jpg",
+    categories: ["Animals", "Figurative"],
+    artPrice: 400,
+    availableAsPrint: true,
+  }),
+  new ArtPiece({
     id: 43,
     title: "Head Honcho",
     medium: "Oil on linen",
@@ -86,15 +118,15 @@ export const artCollection: ArtPiece[] = [
     categories: ["Animals"],
     artPrice: 150,
   }),
-  new ArtPiece({
-    id: 42,
-    title: "Free and Easy",
-    medium: "Oil on panel",
-    dimensions: "6 x 8 inches",
-    imageUrl: "/assets/images/Free and Easy.jpg",
-    categories: ["Animals", "Landscape"],
-    artPrice: 95,
-  }),
+  // new ArtPiece({
+  //   id: 42,
+  //   title: "Free and Easy",
+  //   medium: "Oil on panel",
+  //   dimensions: "6 x 8 inches",
+  //   imageUrl: "/assets/images/Free and Easy.jpg",
+  //   categories: ["Animals", "Landscape"],
+  //   artPrice: 95,
+  // }),
   new ArtPiece({
    id: 41,
    title: "Zen on the Rio Grande",
@@ -282,14 +314,14 @@ export const artCollection: ArtPiece[] = [
     availableAsPrint: true,
     availableAsCard: true,
   }),
-  new ArtPiece({
-    id: 10,
-    title: "In Pursuit of Two Feet",
-    imageUrl: "/assets/images/In Pursuit of Two Feet.jpg",
-    categories: ["Western", "Animals", "Figurative"],
-    sold: true,
-    artPrice: 175,
-  }),
+  // new ArtPiece({
+  //   id: 10,
+  //   title: "In Pursuit of Two Feet",
+  //   imageUrl: "/assets/images/In Pursuit of Two Feet.jpg",
+  //   categories: ["Western", "Animals", "Figurative"],
+  //   sold: true,
+  //   artPrice: 175,
+  // }),
   new ArtPiece({
     id: 14,
     title: "Meandering Gila River",
@@ -422,25 +454,25 @@ export const artCollection: ArtPiece[] = [
     imageUrl: "/assets/images/Winding Aspen Trail.jpg",
     artPrice: 200,
   }),
-  new ArtPiece({
-    id: 4,
-    title: "Beauty in Desolation",
-    medium: "Oil on panel",
-    imageUrl: "/assets/images/Beauty in Desolation.jpg",
-    sold: true,
-    artPrice: 150,
-    availableAsCard: true,
-  }),
-  new ArtPiece({
-    id: 27,
-    showInGallery: false,
-    title: "Beauty in Desolation - B&W",
-    medium: "Oil on panel",
-    imageUrl: "/assets/images/Beauty in Desolation - B&W.jpg",
-    sold: true,
-    artPrice: 150,
-    availableAsCard: true,
-  }),
+  // new ArtPiece({
+  //   id: 4,
+  //   title: "Beauty in Desolation",
+  //   medium: "Oil on panel",
+  //   imageUrl: "/assets/images/Beauty in Desolation.jpg",
+  //   sold: true,
+  //   artPrice: 150,
+  //   availableAsCard: true,
+  // }),
+  // new ArtPiece({
+  //   id: 27,
+  //   showInGallery: false,
+  //   title: "Beauty in Desolation - B&W",
+  //   medium: "Oil on panel",
+  //   imageUrl: "/assets/images/Beauty in Desolation - B&W.jpg",
+  //   sold: true,
+  //   artPrice: 150,
+  //   availableAsCard: true,
+  // }),
   new ArtPiece({
     id: 28,
     title: "My American Dream",
@@ -460,16 +492,16 @@ export const artCollection: ArtPiece[] = [
     sold: true,
     artPrice: 375,
   }),
-  new ArtPiece({
-    id: 30,
-    title: "Salt River Watering Hole",
-    medium: "Oil on linen",
-    imageUrl: "/assets/images/Salt River Watering Hole.jpg",
-    categories: ["Animals", "Landscape"],
-    artPrice: 150,
-    availableAsPrint: true,
-    availableAsCard: true,
-  }),
+  // new ArtPiece({
+  //   id: 30,
+  //   title: "Salt River Watering Hole",
+  //   medium: "Oil on linen",
+  //   imageUrl: "/assets/images/Salt River Watering Hole.jpg",
+  //   categories: ["Animals", "Landscape"],
+  //   artPrice: 150,
+  //   availableAsPrint: true,
+  //   availableAsCard: true,
+  // }),
   new ArtPiece({
     id: 31,
     title: "Blaine on that Ol' Pony",

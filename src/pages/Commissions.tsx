@@ -178,7 +178,7 @@ const Commissions = () => {
               <div className="commission-info-content">
                 <p>
                   Commission pricing varies based on several factors including size, complexity, medium, 
-                  and timeline. In general, custom commissions are approximately $3.00 per square inch. 
+                  and timeline. In general, custom commissions are approximately $2.00 per square inch. 
                 </p>
                 <p>
                 - Framing is not included, but can be discussed and provided for an additional cost. 
